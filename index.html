@@ -1,0 +1,1854 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎨 HTML & CSS Seekho | Learn HTML & CSS — Complete Bilingual Course</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Nunito:wght@400;600;700;800&display=swap');
+
+:root {
+  --primary:#6c3fc5; --primary2:#8b5cf6;
+  --accent:#ff6b35; --green:#22c55e;
+  --yellow:#fbbf24; --pink:#ec4899;
+  --bg:#0a0818; --card:#131124; --card2:#1c1735;
+  --text:#e8e0ff; --muted:#8070a8;
+  --border:#231e40; --radius:16px;
+  --hi-font:'Baloo 2',sans-serif;
+  --body-font:'Nunito',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--body-font);background:var(--bg);color:var(--text);overflow-x:hidden;min-height:100vh;}
+
+/* ── STARS ── */
+.stars{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+.star{position:absolute;background:#fff;border-radius:50%;animation:tw 3s infinite alternate;}
+@keyframes tw{0%{opacity:.15;transform:scale(1);}100%{opacity:.9;transform:scale(1.5);}}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:1000;background:rgba(10,8,24,.93);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.nav-logo{font-family:var(--hi-font);font-size:1.3rem;font-weight:800;background:linear-gradient(135deg,#a78bfa,#ff6b35);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:4px;flex-wrap:wrap;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.78rem;font-weight:700;padding:5px 11px;border-radius:20px;transition:all .2s;border:1px solid transparent;}
+.nav-links a:hover,.nav-links a.active{color:#fff;background:var(--primary);border-color:var(--primary);}
+.lang-toggle{display:flex;gap:4px;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:3px;}
+.lang-btn{padding:4px 12px;border-radius:16px;border:none;font-size:.75rem;font-weight:700;cursor:pointer;transition:all .2s;background:transparent;color:var(--muted);}
+.lang-btn.active{background:var(--primary);color:#fff;}
+
+/* ── HERO ── */
+.hero{position:relative;z-index:1;text-align:center;padding:60px 20px 40px;min-height:88vh;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(108,63,197,.2);border:1px solid rgba(108,63,197,.5);border-radius:20px;padding:6px 16px;font-size:.82rem;color:#a78bfa;margin-bottom:22px;animation:fdU .6s ease;}
+.hero h1{font-family:var(--hi-font);font-size:clamp(2rem,6vw,3.8rem);font-weight:800;line-height:1.15;margin-bottom:14px;animation:fdU .7s ease .1s both;}
+.hero h1 span{background:linear-gradient(135deg,#a78bfa 0%,#ff6b35 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero p{font-size:clamp(.95rem,2.5vw,1.2rem);color:var(--muted);max-width:560px;line-height:1.75;margin-bottom:28px;animation:fdU .7s ease .2s both;}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;animation:fdU .7s ease .3s both;}
+@keyframes fdU{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+
+/* ── BUTTONS ── */
+.btn{padding:12px 26px;border-radius:12px;font-weight:700;font-size:.95rem;cursor:pointer;border:none;transition:all .25s;text-decoration:none;display:inline-flex;align-items:center;gap:6px;}
+.btn-primary{background:linear-gradient(135deg,#6c3fc5,#8b5cf6);color:#fff;box-shadow:0 4px 20px rgba(108,63,197,.5);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(108,63,197,.7);}
+.btn-secondary{background:transparent;color:#fff;border:2px solid var(--border);}
+.btn-secondary:hover{border-color:var(--primary);background:rgba(108,63,197,.1);}
+
+/* ── TAGS ── */
+.hero-tags{margin-top:36px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;animation:fdU .7s ease .4s both;}
+.htag{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:7px 13px;font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:5px;}
+.htag span{color:var(--green);}
+
+/* ── SECTIONS ── */
+section{position:relative;z-index:1;}
+.container{max-width:980px;margin:0 auto;padding:0 16px;}
+.section-header{text-align:center;margin-bottom:36px;}
+.section-header h2{font-family:var(--hi-font);font-size:clamp(1.5rem,4vw,2.3rem);font-weight:800;margin-bottom:8px;}
+.section-header p{color:var(--muted);font-size:.95rem;}
+.eyebrow{display:inline-block;background:rgba(108,63,197,.2);color:#a78bfa;border-radius:8px;padding:3px 10px;font-size:.75rem;font-weight:700;margin-bottom:10px;letter-spacing:.08em;text-transform:uppercase;}
+
+/* ── ROADMAP ── */
+#roadmap{padding:60px 0;background:rgba(20,16,45,.4);}
+.roadmap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;}
+.rm-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 16px;text-align:center;transition:all .25s;position:relative;overflow:hidden;}
+.rm-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--accent));transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.rm-card:hover{transform:translateY(-4px);border-color:var(--primary);}
+.rm-card:hover::after{transform:scaleX(1);}
+.rm-num{font-size:.7rem;color:var(--accent);font-weight:800;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;}
+.rm-icon{font-size:1.8rem;margin-bottom:8px;}
+.rm-card h4{font-size:.9rem;font-weight:700;margin-bottom:4px;}
+.rm-card p{font-size:.75rem;color:var(--muted);line-height:1.5;}
+.diff{display:inline-block;font-size:.68rem;font-weight:700;padding:3px 8px;border-radius:6px;margin-top:8px;}
+.easy{background:rgba(34,197,94,.15);color:var(--green);}
+.medium{background:rgba(251,191,36,.15);color:var(--yellow);}
+.hard{background:rgba(255,107,53,.15);color:var(--accent);}
+
+/* ── LESSON VIEWER ── */
+#lesson-viewer{display:none;padding:30px 0 60px;}
+.lv-inner{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;}
+.lv-head{padding:22px 24px 18px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.lv-head h2{font-family:var(--hi-font);font-size:1.4rem;font-weight:800;}
+.lv-body{display:grid;grid-template-columns:1fr 1fr;min-height:560px;}
+@media(max-width:700px){.lv-body{grid-template-columns:1fr;}}
+.lv-explain{padding:22px;border-right:1px solid var(--border);overflow-y:auto;max-height:620px;}
+@media(max-width:700px){.lv-explain{border-right:none;border-bottom:1px solid var(--border);max-height:none;}}
+.lv-explain h3{font-family:var(--hi-font);font-size:1rem;margin-bottom:8px;color:#a78bfa;}
+.lv-explain h3+h3{margin-top:16px;}
+.lv-explain p{font-size:.87rem;color:var(--muted);line-height:1.8;margin-bottom:10px;}
+.lv-explain ul{padding-left:18px;color:var(--muted);font-size:.87rem;line-height:2;}
+.cbox{background:var(--card2);border:1px solid var(--border);border-left:4px solid var(--primary);border-radius:10px;padding:13px 15px;margin:12px 0;}
+.cbox .clabel{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:800;margin-bottom:5px;}
+.cbox p{font-size:.85rem;color:var(--text);margin:0;line-height:1.7;}
+.tipbox{background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:10px;padding:11px 14px;margin:12px 0;font-size:.83rem;color:#86efac;}
+.tipbox strong{color:var(--green);}
+.codex{background:#070514;border:1px solid var(--border);border-radius:10px;padding:14px;margin:12px 0;font-family:'Courier New',monospace;font-size:.8rem;line-height:1.75;overflow-x:auto;white-space:pre;color:#c4b5fd;}
+.ht{color:#f87171;} .ha{color:#fbbf24;} .hv{color:#86efac;} .cp{color:#60a5fa;} .cv{color:#f472b6;} .cm{color:#555;font-style:italic;}
+
+/* ── CODE EDITOR ── */
+.editor-panel{display:flex;flex-direction:column;background:#070514;}
+.editor-tabs{display:flex;background:var(--card2);border-bottom:1px solid var(--border);}
+.etab{padding:9px 16px;font-size:.8rem;font-weight:700;cursor:pointer;color:var(--muted);border-bottom:2px solid transparent;transition:all .2s;}
+.etab.active{color:#fff;border-bottom-color:var(--primary);}
+.editor-actions{padding:7px 12px;display:flex;gap:7px;align-items:center;border-bottom:1px solid var(--border);background:var(--card2);flex-wrap:wrap;}
+.run-btn{background:var(--green);color:#052e16;border:none;padding:6px 16px;border-radius:8px;font-weight:800;font-size:.82rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:4px;}
+.run-btn:hover{transform:scale(1.06);box-shadow:0 4px 16px rgba(34,197,94,.4);}
+.reset-btn{background:transparent;color:var(--muted);border:1px solid var(--border);padding:6px 12px;border-radius:8px;font-weight:600;font-size:.78rem;cursor:pointer;transition:all .2s;}
+.reset-btn:hover{color:#fff;border-color:var(--accent);}
+.copy-btn{background:transparent;color:var(--muted);border:1px solid var(--border);padding:6px 12px;border-radius:8px;font-weight:600;font-size:.78rem;cursor:pointer;transition:all .2s;margin-left:auto;}
+.copy-btn:hover{color:#fff;border-color:var(--primary);}
+.code-ta{flex:1;background:transparent;border:none;outline:none;color:#c4b5fd;font-family:'Courier New',monospace;font-size:16px;padding:15px;resize:none;min-height:220px;line-height:1.75;tab-size:2;-webkit-text-size-adjust:100%;}
+.prev-frame{width:100%;flex:1;border:none;min-height:220px;background:#fff;}
+.prev-label{background:var(--card2);padding:7px 14px;font-size:.72rem;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:5px;}
+.dot{width:8px;height:8px;border-radius:50%;} .dr{background:#f87171;} .dy{background:#fbbf24;} .dg{background:#22c55e;}
+.run-btn,.reset-btn,.copy-btn,.tbar-btn,.etab{touch-action:manipulation;}
+.run-btn,.reset-btn,.copy-btn{min-height:36px;}
+.err-banner{display:none;background:rgba(255,107,53,.12);border-bottom:1px solid rgba(255,107,53,.4);color:#ffb199;font-size:.78rem;font-weight:700;padding:8px 14px;}
+.err-banner.show{display:block;}
+/* ── TOAST ── */
+#toast-wrap{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:5000;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none;}
+.toast{background:#1c1735;border:1px solid var(--primary);color:#fff;font-size:.85rem;font-weight:700;padding:10px 18px;border-radius:30px;box-shadow:0 8px 30px rgba(0,0,0,.4);opacity:0;transform:translateY(10px);transition:all .25s ease;}
+.toast.show{opacity:1;transform:translateY(0);}
+
+/* ── CONCEPTS ── */
+#concepts{padding:60px 0;background:rgba(19,17,36,.5);}
+.concepts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;}
+.con-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;transition:all .25s;}
+.con-card:hover{border-color:var(--accent);transform:translateY(-3px);}
+.con-icon{font-size:1.9rem;margin-bottom:10px;}
+.con-card h3{font-size:.95rem;font-weight:700;margin-bottom:5px;}
+.con-card p{font-size:.82rem;color:var(--muted);line-height:1.6;}
+
+/* ── CHEATSHEET ── */
+.cheat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:36px;}
+
+/* ── PLAYGROUND ── */
+#playground{padding:60px 0;}
+.pg-wrap{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;}
+.pg-head{padding:18px 22px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;background:var(--card2);}
+.pg-head h3{font-family:var(--hi-font);font-size:1.1rem;font-weight:700;}
+.pg-body{display:grid;grid-template-columns:1fr 1fr;min-height:480px;}
+@media(max-width:680px){.pg-body{grid-template-columns:1fr;}}
+.pg-editor{display:flex;flex-direction:column;background:#070514;border-right:1px solid var(--border);}
+@media(max-width:680px){.pg-editor{border-right:none;border-bottom:1px solid var(--border);}}
+.pg-ta{flex:1;background:transparent;border:none;outline:none;color:#c4b5fd;font-family:'Courier New',monospace;font-size:16px;padding:14px;resize:none;min-height:300px;line-height:1.75;tab-size:2;-webkit-text-size-adjust:100%;}
+.pg-toolbar{padding:8px 12px;background:var(--card2);border-top:1px solid var(--border);display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
+.tbar-btn{background:var(--card);border:1px solid var(--border);color:var(--muted);padding:4px 10px;border-radius:6px;font-size:.72rem;font-weight:700;cursor:pointer;transition:all .2s;}
+.tbar-btn:hover{background:var(--primary);color:#fff;border-color:var(--primary);}
+.pg-preview{display:flex;flex-direction:column;background:#fff;}
+.pg-prev-head{padding:7px 14px;font-size:.72rem;color:#888;font-weight:700;display:flex;align-items:center;gap:5px;background:#f3f4f6;border-bottom:1px solid #e5e7eb;}
+#pg-frame{width:100%;flex:1;border:none;min-height:300px;}
+
+/* ── QUIZ ── */
+#quiz{padding:60px 0;background:rgba(19,17,36,.5);}
+.quiz-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px;max-width:700px;margin:0 auto;}
+.quiz-q{font-family:var(--hi-font);font-size:1.15rem;font-weight:700;margin-bottom:20px;line-height:1.5;}
+.quiz-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+@media(max-width:500px){.quiz-opts{grid-template-columns:1fr;}}
+.qopt{background:var(--card2);border:1px solid var(--border);color:var(--text);padding:12px 16px;border-radius:12px;font-size:.9rem;font-weight:600;cursor:pointer;transition:all .2s;text-align:left;}
+.qopt:hover:not(:disabled){border-color:var(--primary);background:rgba(108,63,197,.15);}
+.qopt.correct{border-color:var(--green);background:rgba(34,197,94,.15);color:var(--green);}
+.qopt.wrong{border-color:var(--accent);background:rgba(255,107,53,.15);color:var(--accent);}
+.qopt:disabled{cursor:default;}
+.qfb{margin-top:16px;padding:13px 16px;border-radius:12px;font-size:.88rem;display:none;}
+.qfb.ok{display:block;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);color:#86efac;}
+.qfb.bad{display:block;background:rgba(255,107,53,.1);border:1px solid rgba(255,107,53,.3);color:#fca5a5;}
+.quiz-nav{margin-top:20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.qprog{font-size:.78rem;color:var(--muted);margin-left:auto;}
+
+/* ── PROJECTS ── */
+#projects{padding:60px 0;}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;}
+.proj-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;cursor:pointer;transition:all .25s;position:relative;overflow:hidden;}
+.proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--accent));transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.proj-card:hover{transform:translateY(-4px);border-color:var(--primary);box-shadow:0 12px 40px rgba(108,63,197,.2);}
+.proj-card:hover::before{transform:scaleX(1);}
+.proj-icon{font-size:2.2rem;margin-bottom:12px;}
+.proj-tag{font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--pink);margin-bottom:4px;}
+.proj-card h3{font-family:var(--hi-font);font-size:1.05rem;margin-bottom:6px;}
+.proj-card p{font-size:.84rem;color:var(--muted);line-height:1.6;}
+.proj-skills{margin-top:14px;display:flex;gap:6px;flex-wrap:wrap;}
+.proj-skill{background:rgba(108,63,197,.2);color:#a78bfa;padding:3px 9px;border-radius:6px;font-size:.7rem;font-weight:700;}
+
+/* ── PROGRESS ── */
+#progress{padding:60px 0;background:rgba(19,17,36,.5);}
+.prog-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;}
+.prog-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center;}
+.prog-num{font-family:var(--hi-font);font-size:2.4rem;font-weight:800;background:linear-gradient(135deg,#a78bfa,#ff6b35);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.prog-label{font-size:.8rem;color:var(--muted);margin-top:4px;margin-bottom:10px;}
+.xp-bar{height:5px;background:var(--border);border-radius:4px;overflow:hidden;}
+.xp-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:4px;transition:width .5s;}
+
+/* ── FOOTER ── */
+footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);color:var(--muted);font-size:.85rem;}
+footer span{color:#a78bfa;font-weight:700;}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(24px);transition:all .55s ease;}
+.reveal.visible{opacity:1;transform:none;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:480px){
+  nav{padding:8px 12px;}
+  .nav-links a{font-size:.72rem;padding:4px 9px;}
+  .lang-btn{padding:3px 9px;}
+  .hero{padding:50px 16px 32px;}
+  .quiz-card{padding:20px 16px;}
+}
+</style>
+</head>
+<body>
+
+<!-- STARS -->
+<div class="stars" id="stars"></div>
+<div id="toast-wrap"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">🎨 HTML&CSS Seekho</div>
+  <div class="nav-links">
+    <a href="#roadmap" onclick="setActive(this)">📚 Lessons</a>
+    <a href="#concepts" onclick="setActive(this)">💡 Concepts</a>
+    <a href="#playground" onclick="setActive(this)">🛠️ Play</a>
+    <a href="#projects" onclick="setActive(this)">🏆 Projects</a>
+    <a href="#quiz" onclick="setActive(this)">🧠 Quiz</a>
+  </div>
+  <div class="lang-toggle">
+    <button class="lang-btn active" id="btn-hi" onclick="setLang('hi')">हिं</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">🚀 <span data-hi="Free Course • School Students ke liye" data-en="Free Course • For School Students">Free Course • School Students ke liye</span></div>
+  <h1><span data-hi="Website Banana Seekho" data-en="Learn to Build Websites">Website Banana Seekho</span><br>
+  <span data-hi="HTML & CSS ke sath!" data-en="with HTML & CSS!">HTML &amp; CSS ke sath!</span></h1>
+  <p data-hi="Bilkul zero se shuru karo — Live code editor, projects, quiz aur progress tracker ke sath! Mobile aur laptop dono par perfectly chalega." data-en="Start from zero — with live code editor, projects, quiz and progress tracker! Works perfectly on mobile and laptop both.">Bilkul zero se shuru karo — Live code editor, projects, quiz aur progress tracker ke sath! Mobile aur laptop dono par perfectly chalega.</p>
+  <div class="hero-btns">
+    <a href="#roadmap" class="btn btn-primary">🚀 <span data-hi="Seekhna Shuru Karo" data-en="Start Learning">Seekhna Shuru Karo</span></a>
+    <a href="#playground" class="btn btn-secondary">🛠️ <span data-hi="Playground Kholao" data-en="Open Playground">Playground Kholao</span></a>
+  </div>
+  <div class="hero-tags">
+    <div class="htag">✅ <span data-hi="15 Lessons" data-en="15 Lessons">15 Lessons</span></div>
+    <div class="htag">🛠️ <span data-hi="Live Code Editor" data-en="Live Code Editor">Live Code Editor</span></div>
+    <div class="htag">📱 <span data-hi="Mobile Friendly" data-en="Mobile Friendly">Mobile Friendly</span></div>
+    <div class="htag">🏆 <span data-hi="5 Projects" data-en="5 Projects">5 Projects</span></div>
+    <div class="htag">🧠 <span data-hi="Quiz" data-en="Quiz">Quiz</span></div>
+    <div class="htag">🆓 <span data-hi="Bilkul Free" data-en="Completely Free">Bilkul Free</span></div>
+  </div>
+</section>
+
+<!-- ROADMAP / LESSONS -->
+<section id="roadmap">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="eyebrow">📚 Lessons</div>
+      <h2 data-hi="Kya Seekhoge Aaj?" data-en="What Will You Learn Today?">Kya Seekhoge Aaj?</h2>
+      <p data-hi="Har lesson mein explanation + code editor + live preview hain" data-en="Every lesson has explanation + code editor + live preview">Har lesson mein explanation + code editor + live preview hain</p>
+    </div>
+    <div class="roadmap-grid" id="roadmap-grid"></div>
+  </div>
+</section>
+
+<!-- LESSON VIEWER -->
+<section id="lesson-viewer">
+  <div class="container">
+    <div class="lv-inner">
+      <div class="lv-head">
+        <div>
+          <div id="lv-num" class="rm-num"></div>
+          <h2 id="lv-title"></h2>
+        </div>
+        <button class="btn btn-secondary" onclick="closeLesson()" style="font-size:.82rem;padding:7px 14px;">✕ <span data-hi="Band Karo" data-en="Close">Band Karo</span></button>
+      </div>
+      <div class="lv-body">
+        <div class="lv-explain" id="lv-explain"></div>
+        <div class="editor-panel">
+          <div class="editor-tabs">
+            <div class="etab active" id="etab-html" onclick="switchTab('html')">📄 HTML</div>
+            <div class="etab" id="etab-css" onclick="switchTab('css')">🎨 CSS</div>
+            <div class="etab" id="etab-prev" onclick="switchTab('preview')">👁️ Preview</div>
+          </div>
+          <div class="editor-actions">
+            <button class="run-btn" onclick="runCode()">▶ <span data-hi="Run Karo" data-en="Run">Run Karo</span></button>
+            <button class="reset-btn" onclick="resetCode()">↺ <span data-hi="Reset" data-en="Reset">Reset</span></button>
+            <button class="copy-btn" onclick="copyCode()">📋 <span data-hi="Copy" data-en="Copy">Copy</span></button>
+          </div>
+          <textarea class="code-ta" id="ed-html" spellcheck="false" autocapitalize="off" autocorrect="off" autocomplete="off"></textarea>
+          <textarea class="code-ta" id="ed-css" spellcheck="false" autocapitalize="off" autocorrect="off" autocomplete="off" style="display:none;"></textarea>
+          <div id="prev-panel" style="display:none;flex:1;flex-direction:column;">
+            <div class="prev-label"><div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>Live Preview</div>
+            <div class="err-banner" id="lesson-err"></div>
+            <iframe class="prev-frame" id="lesson-frame" sandbox="allow-scripts allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCEPTS -->
+<section id="concepts">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="eyebrow">💡 Concepts</div>
+      <h2 data-hi="HTML & CSS ke Zaroori Concepts" data-en="Essential HTML & CSS Concepts">HTML &amp; CSS ke Zaroori Concepts</h2>
+      <p data-hi="Sabse important cheezein ek jagah pe samjho" data-en="Understand all important things in one place">Sabse important cheezein ek jagah pe samjho</p>
+    </div>
+    <div class="concepts-grid reveal">
+      <div class="con-card">
+        <div class="con-icon">🏷️</div>
+        <h3 data-hi="HTML Tags" data-en="HTML Tags">HTML Tags</h3>
+        <p data-hi="Tags se webpage ka dhanchaa banta hai. Jaise <h1> heading ke liye, <p> paragraph ke liye, <div> container ke liye." data-en="Tags create the structure of a webpage. Like <h1> for heading, <p> for paragraph, <div> for container.">Tags se webpage ka dhanchaa banta hai. Jaise &lt;h1&gt; heading ke liye, &lt;p&gt; paragraph ke liye, &lt;div&gt; container ke liye.</p>
+      </div>
+      <div class="con-card">
+        <div class="con-icon">🎨</div>
+        <h3 data-hi="CSS Selectors" data-en="CSS Selectors">CSS Selectors</h3>
+        <p data-hi="CSS selectors batate hain kis element ko style karna hai — tag, .class, ya #id se select karte hain." data-en="CSS selectors decide which element to style — select using tag, .class, or #id.">CSS selectors batate hain kis element ko style karna hai — tag, .class, ya #id se select karte hain.</p>
+      </div>
+      <div class="con-card">
+        <div class="con-icon">📦</div>
+        <h3 data-hi="Box Model" data-en="Box Model">Box Model</h3>
+        <p data-hi="Har element ek box hai — content, padding (andar space), border (rekha), margin (bahar space). Yeh samajhna bahut zaroori hai!" data-en="Every element is a box — content, padding (inner space), border (outline), margin (outer space). This is very essential!">Har element ek box hai — content, padding (andar space), border (rekha), margin (bahar space). Yeh samajhna bahut zaroori hai!</p>
+      </div>
+      <div class="con-card">
+        <div class="con-icon">📐</div>
+        <h3 data-hi="Flexbox" data-en="Flexbox">Flexbox</h3>
+        <p data-hi="Flexbox se items ko side-by-side, center mein, ya space ke sath arrange karte hain. display:flex likh do aur magic dekho!" data-en="Flexbox arranges items side-by-side, center, or with spacing. Write display:flex and see the magic!">Flexbox se items ko side-by-side, center mein, ya space ke sath arrange karte hain. display:flex likh do aur magic dekho!</p>
+      </div>
+      <div class="con-card">
+        <div class="con-icon">🗂️</div>
+        <h3 data-hi="CSS Grid" data-en="CSS Grid">CSS Grid</h3>
+        <p data-hi="Grid se rows aur columns mein layout banate hain — newspaper ya magazine layout ke liye perfect!" data-en="Grid creates row and column layouts — perfect for newspaper or magazine style layouts!">Grid se rows aur columns mein layout banate hain — newspaper ya magazine layout ke liye perfect!</p>
+      </div>
+      <div class="con-card">
+        <div class="con-icon">📱</div>
+        <h3 data-hi="Responsive Design" data-en="Responsive Design">Responsive Design</h3>
+        <p data-hi="@media queries se website mobile, tablet, laptop — sab par sahi dikhti hai. Ek code, sab jagah perfect!" data-en="@media queries make the website look right on mobile, tablet, laptop. One code, perfect everywhere!">@media queries se website mobile, tablet, laptop — sab par sahi dikhti hai. Ek code, sab jagah perfect!</p>
+      </div>
+      <div class="con-card">
+        <div class="con-icon">✨</div>
+        <h3 data-hi="Animations" data-en="Animations">Animations</h3>
+        <p data-hi="@keyframes aur transition se elements bounce, fade, rotate, slide kar sakte hain — bilkul games ki tarah!" data-en="@keyframes and transition make elements bounce, fade, rotate, slide — just like in games!">@keyframes aur transition se elements bounce, fade, rotate, slide kar sakte hain — bilkul games ki tarah!</p>
+      </div>
+      <div class="con-card">
+        <div class="con-icon">🔤</div>
+        <h3 data-hi="Google Fonts" data-en="Google Fonts">Google Fonts</h3>
+        <p data-hi="Google Fonts se 1000+ fonts free mein milte hain. @import se website mein add karo aur font-family se use karo!" data-en="Google Fonts gives 1000+ fonts for free. Add with @import and use with font-family!">Google Fonts se 1000+ fonts free mein milte hain. @import se website mein add karo aur font-family se use karo!</p>
+      </div>
+    </div>
+
+    <!-- CHEATSHEET -->
+    <div class="reveal cheat-grid">
+      <div class="cbox">
+        <div class="clabel">HTML Structure</div>
+        <div class="codex">&lt;<span class="ht">!DOCTYPE html</span>&gt;
+&lt;<span class="ht">html</span>&gt;
+  &lt;<span class="ht">head</span>&gt;
+    &lt;<span class="ht">title</span>&gt;Title&lt;/<span class="ht">title</span>&gt;
+  &lt;/<span class="ht">head</span>&gt;
+  &lt;<span class="ht">body</span>&gt;
+    Content yahan
+  &lt;/<span class="ht">body</span>&gt;
+&lt;/<span class="ht">html</span>&gt;</div>
+      </div>
+      <div class="cbox">
+        <div class="clabel">CSS Selector Types</div>
+        <div class="codex"><span class="cm">/* Tag */</span>
+<span class="ht">p</span> { <span class="cp">color</span>: <span class="cv">blue</span>; }
+
+<span class="cm">/* Class */</span>
+<span class="ht">.card</span> { <span class="cp">background</span>: <span class="cv">white</span>; }
+
+<span class="cm">/* ID */</span>
+<span class="ht">#logo</span> { <span class="cp">font-size</span>: <span class="cv">24px</span>; }</div>
+      </div>
+      <div class="cbox">
+        <div class="clabel">Flexbox Center</div>
+        <div class="codex"><span class="ht">.box</span> {
+  <span class="cp">display</span>: <span class="cv">flex</span>;
+  <span class="cp">justify-content</span>: <span class="cv">center</span>;
+  <span class="cp">align-items</span>: <span class="cv">center</span>;
+  <span class="cp">gap</span>: <span class="cv">16px</span>;
+}</div>
+      </div>
+      <div class="cbox">
+        <div class="clabel">CSS Grid</div>
+        <div class="codex"><span class="ht">.grid</span> {
+  <span class="cp">display</span>: <span class="cv">grid</span>;
+  <span class="cp">grid-template-columns</span>:
+    <span class="cv">repeat(3, 1fr)</span>;
+  <span class="cp">gap</span>: <span class="cv">16px</span>;
+}</div>
+      </div>
+      <div class="cbox">
+        <div class="clabel">@keyframes Animation</div>
+        <div class="codex"><span class="ht">@keyframes</span> <span class="hv">bounce</span> {
+  <span class="hv">0%,100%</span> { <span class="cp">transform</span>: <span class="cv">translateY(0)</span>; }
+  <span class="hv">50%</span> { <span class="cp">transform</span>: <span class="cv">translateY(-20px)</span>; }
+}
+<span class="ht">.ball</span> { <span class="cp">animation</span>: <span class="cv">bounce 1s infinite</span>; }</div>
+      </div>
+      <div class="cbox">
+        <div class="clabel">Media Query (Responsive)</div>
+        <div class="codex"><span class="ht">@media</span> (<span class="cp">max-width</span>: <span class="cv">600px</span>) {
+  <span class="ht">.grid</span> {
+    <span class="cp">grid-template-columns</span>: <span class="cv">1fr</span>;
+  }
+}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLAYGROUND -->
+<section id="playground">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="eyebrow">🛠️ Playground</div>
+      <h2 data-hi="Apna Code Khud Likho!" data-en="Write Your Own Code!">Apna Code Khud Likho!</h2>
+      <p data-hi="Kuch bhi try karo — real time preview milega, mobile par bhi!" data-en="Try anything — get real time preview, on mobile too!">Kuch bhi try karo — real time preview milega, mobile par bhi!</p>
+    </div>
+    <div class="pg-wrap reveal">
+      <div class="pg-head">
+        <h3>🧑‍💻 <span data-hi="Live Code Editor" data-en="Live Code Editor">Live Code Editor</span></h3>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="run-btn" onclick="runPG()">▶ <span data-hi="Run" data-en="Run">Run</span></button>
+          <button class="reset-btn" onclick="resetPG()">↺ <span data-hi="Reset" data-en="Reset">Reset</span></button>
+        </div>
+      </div>
+      <div class="pg-body">
+        <div class="pg-editor">
+          <div class="editor-tabs" style="background:#0a0818;">
+            <div class="etab active">📝 HTML + CSS</div>
+          </div>
+          <textarea class="pg-ta" id="pg-code" spellcheck="false" autocapitalize="off" autocorrect="off" autocomplete="off"></textarea>
+          <div class="pg-toolbar">
+            <span style="font-size:.72rem;color:var(--muted);font-weight:700;" data-hi="Insert:" data-en="Insert:">Insert:</span>
+            <button class="tbar-btn" onclick="snippet('h1')">H1</button>
+            <button class="tbar-btn" onclick="snippet('p')">Para</button>
+            <button class="tbar-btn" onclick="snippet('img')">Img</button>
+            <button class="tbar-btn" onclick="snippet('btn')">Button</button>
+            <button class="tbar-btn" onclick="snippet('div')">Div</button>
+            <button class="tbar-btn" onclick="snippet('a')">Link</button>
+            <button class="tbar-btn" onclick="snippet('ul')">List</button>
+            <button class="tbar-btn" onclick="snippet('table')">Table</button>
+            <button class="tbar-btn" onclick="snippet('form')">Form</button>
+            <button class="tbar-btn" onclick="snippet('flex')">Flex</button>
+            <button class="tbar-btn" onclick="snippet('grid')">Grid</button>
+            <button class="tbar-btn" onclick="snippet('anim')">Anim</button>
+          </div>
+        </div>
+        <div class="pg-preview">
+          <div class="pg-prev-head"><div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>👁️ Live Preview</div>
+          <div class="err-banner" id="pg-err"></div>
+          <iframe id="pg-frame" sandbox="allow-scripts allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="eyebrow">🏆 Projects</div>
+      <h2 data-hi="Real Projects Banao!" data-en="Build Real Projects!">Real Projects Banao!</h2>
+      <p data-hi="Sirf theory nahi — asli cheezein banao aur apna portfolio taiyar karo" data-en="Not just theory — build real things and prepare your portfolio">Sirf theory nahi — asli cheezein banao aur apna portfolio taiyar karo</p>
+    </div>
+    <div class="proj-grid" id="proj-grid"></div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="eyebrow">🧠 Quiz</div>
+      <h2 data-hi="Apna Knowledge Test Karo!" data-en="Test Your Knowledge!">Apna Knowledge Test Karo!</h2>
+      <p data-hi="Jawab do aur dekho kitna seekha — score milega!" data-en="Answer and see how much you've learned — you'll get a score!">Jawab do aur dekho kitna seekha — score milega!</p>
+    </div>
+    <div class="quiz-card reveal">
+      <div id="quiz-body"></div>
+      <div id="quiz-nav" class="quiz-nav"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRESS -->
+<section id="progress">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="eyebrow">📊 Progress</div>
+      <h2 data-hi="Tumhari Progress" data-en="Your Progress">Tumhari Progress</h2>
+    </div>
+    <div class="prog-cards reveal">
+      <div class="prog-card">
+        <div class="prog-num" id="s-lessons">0</div>
+        <div class="prog-label" data-hi="Lessons Khole" data-en="Lessons Opened">Lessons Khole</div>
+        <div class="xp-bar"><div class="xp-fill" id="b-lessons" style="width:0%"></div></div>
+      </div>
+      <div class="prog-card">
+        <div class="prog-num" id="s-runs">0</div>
+        <div class="prog-label" data-hi="Code Run kiya" data-en="Code Runs">Code Run kiya</div>
+        <div class="xp-bar"><div class="xp-fill" id="b-runs" style="width:0%"></div></div>
+      </div>
+      <div class="prog-card">
+        <div class="prog-num" id="s-quiz">0</div>
+        <div class="prog-label" data-hi="Quiz Sahi" data-en="Quiz Correct">Quiz Sahi</div>
+        <div class="xp-bar"><div class="xp-fill" id="b-quiz" style="width:0%"></div></div>
+      </div>
+      <div class="prog-card">
+        <div class="prog-num" id="s-xp">0</div>
+        <div class="prog-label" data-hi="Total XP 🌟" data-en="Total XP 🌟">Total XP 🌟</div>
+        <div class="xp-bar"><div class="xp-fill" id="b-xp" style="width:0%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>🎨 <span>HTML &amp; CSS Seekho</span> — <span data-hi="School Students ke liye banaya gaya" data-en="Made for School Students">School Students ke liye banaya gaya</span> ❤️</p>
+  <p style="margin-top:8px;font-size:.76rem;" data-hi="Mobile par bhi perfectly chalega • Bilkul Free • Koi login nahi chahiye" data-en="Works perfectly on mobile • Completely Free • No login required">Mobile par bhi perfectly chalega • Bilkul Free • Koi login nahi chahiye</p>
+</footer>
+
+<script>
+// ===== STARS =====
+(()=>{
+  const c=document.getElementById('stars');
+  for(let i=0;i<55;i++){
+    const s=document.createElement('div');
+    s.className='star';
+    const sz=Math.random()*2.5+.5;
+    s.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*4}s;animation-duration:${2+Math.random()*3}s;`;
+    c.appendChild(s);
+  }
+})();
+
+// ===== LANGUAGE =====
+let lang='hi';
+function setLang(l){
+  lang=l;
+  document.getElementById('btn-hi').className='lang-btn'+(l==='hi'?' active':'');
+  document.getElementById('btn-en').className='lang-btn'+(l==='en'?' active':'');
+  document.querySelectorAll('[data-hi]').forEach(el=>{
+    el.textContent=el.getAttribute('data-'+l)||el.textContent;
+  });
+}
+
+// ===== NAV ACTIVE =====
+function setActive(el){
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// ===== STATS =====
+let stats={lessons:0,runs:0,quiz:0,xp:0};
+function updateStats(){
+  document.getElementById('s-lessons').textContent=stats.lessons;
+  document.getElementById('s-runs').textContent=stats.runs;
+  document.getElementById('s-quiz').textContent=stats.quiz;
+  document.getElementById('s-xp').textContent=stats.xp;
+  document.getElementById('b-lessons').style.width=Math.min(100,stats.lessons/15*100)+'%';
+  document.getElementById('b-runs').style.width=Math.min(100,stats.runs/25*100)+'%';
+  document.getElementById('b-quiz').style.width=Math.min(100,stats.quiz/15*100)+'%';
+  document.getElementById('b-xp').style.width=Math.min(100,stats.xp/800*100)+'%';
+}
+
+// ===== LESSONS DATA =====
+const lessons=[
+  {id:1,emoji:'🏠',title:['Pehli Website Banao','Build Your First Website'],diff:'easy',
+   desc:['HTML kya hai aur apni pehli webpage kaise banate hain.','What is HTML and how to build your first webpage.'],
+   explain:`<h3>HTML kya hai? 🤔 <small style="font-weight:400;color:var(--muted);font-size:.8rem;">| What is HTML?</small></h3>
+<p>HTML ka matlab hai <strong>HyperText Markup Language</strong>. Yeh ek language hai jisse hum webpages banate hain. Jaise ek ghar ki neenv (foundation) hoti hai, waise hi HTML website ki neenv hai!</p>
+<p style="color:#86efac;font-size:.82rem;font-style:italic;">HTML stands for HyperText Markup Language. It is the foundation of every website, just like the base of a house!</p>
+<div class="cbox"><div class="clabel">📌 Yaad Rakho | Remember</div><p>HTML <strong>tags</strong> se likha jata hai. Har tag angle brackets mein hota hai: <code style="color:#a78bfa">&lt;tagname&gt;</code></p></div>
+<h3>Basic Structure 🏗️</h3>
+<div class="codex">&lt;<span class="ht">!DOCTYPE html</span>&gt;
+&lt;<span class="ht">html</span>&gt;
+  &lt;<span class="ht">head</span>&gt;
+    &lt;<span class="ht">title</span>&gt;Meri Website&lt;/<span class="ht">title</span>&gt;
+  &lt;/<span class="ht">head</span>&gt;
+  &lt;<span class="ht">body</span>&gt;
+    <span class="cm">&lt;!-- Content yahan aata hai --&gt;</span>
+    &lt;<span class="ht">h1</span>&gt;Namaste! 🌍&lt;/<span class="ht">h1</span>&gt;
+    &lt;<span class="ht">p</span>&gt;Yeh meri pehli website hai!&lt;/<span class="ht">p</span>&gt;
+  &lt;/<span class="ht">body</span>&gt;
+&lt;/<span class="ht">html</span>&gt;</div>
+<div class="tipbox"><strong>💡 Tip:</strong> &lt;head&gt; mein settings aati hain. &lt;body&gt; mein woh dikhta hai jo user screen pe dekhta hai!</div>`,
+   htmlCode:`<!DOCTYPE html>
+<html>
+<head>
+  <title>Meri Pehli Website</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fef9c3; text-align: center; padding: 40px; }
+    h1 { color: #7c3aed; font-size: 48px; }
+    h2 { color: #059669; }
+    p  { color: #374151; font-size: 18px; }
+    .box { background: white; padding: 20px; border-radius: 14px; display: inline-block; margin-top: 20px; box-shadow: 0 4px 20px rgba(0,0,0,.1); }
+  </style>
+</head>
+<body>
+  <h1>🎉 Namaste Duniya!</h1>
+  <h2>Yeh meri pehli website hai!</h2>
+  <p>Maine HTML seekhna shuru kar diya hai 🚀</p>
+  <div class="box">
+    <p>Naam: <strong>Apna Naam Yahan Likho</strong></p>
+    <p>School: <em>Tumhare School Ka Naam</em></p>
+  </div>
+</body>
+</html>`,cssCode:``},
+
+  {id:2,emoji:'✏️',title:['Text & Paragraph Tags','Text & Paragraph Tags'],diff:'easy',
+   desc:['p, strong, em, br, span tags se text format karna seekho.','Learn to format text with p, strong, em, br, span tags.'],
+   explain:`<h3>Text Tags 📄 | Text Tags</h3>
+<p>HTML mein text ko sundar banane ke liye kai tags hain. Inhe seekhna bahut aasan hai!</p>
+<div class="codex">&lt;<span class="ht">p</span>&gt;Normal paragraph&lt;/<span class="ht">p</span>&gt;
+&lt;<span class="ht">strong</span>&gt;Bold text&lt;/<span class="ht">strong</span>&gt;
+&lt;<span class="ht">em</span>&gt;Italic text&lt;/<span class="ht">em</span>&gt;
+&lt;<span class="ht">u</span>&gt;Underline text&lt;/<span class="ht">u</span>&gt;
+&lt;<span class="ht">mark</span>&gt;Highlighted text&lt;/<span class="ht">mark</span>&gt;
+&lt;<span class="ht">del</span>&gt;Strikethrough&lt;/<span class="ht">del</span>&gt;
+&lt;<span class="ht">br</span>&gt; <span class="cm">&lt;!-- New line --&gt;</span>
+&lt;<span class="ht">sup</span>&gt;superscript&lt;/<span class="ht">sup</span>&gt;
+&lt;<span class="ht">sub</span>&gt;subscript&lt;/<span class="ht">sub</span>&gt;</div>
+<div class="cbox"><div class="clabel">Heading Tags h1–h6</div><p>h1 = sabse bada | h6 = sabse chhota<br><code>&lt;h1&gt;</code> sirf ek baar use karo per page — SEO ke liye!</p></div>
+<div class="tipbox"><strong>💡 Try:</strong> Neeche code mein apna naam aur school ka naam likho!</div>`,
+   htmlCode:`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: Georgia, serif; padding: 30px; background: #f0fdf4; max-width: 600px; margin: 0 auto; }
+    h1 { color: #166534; } h2 { color: #15803d; }
+    .box { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,.08); margin: 10px 0; }
+  </style>
+</head>
+<body>
+  <h1>📝 Text Formatting</h1>
+  <div class="box">
+    <p>Mera naam <strong>Rahul</strong> hai.</p>
+    <p>Main <em>class 8</em> mein padhta hoon.</p>
+    <p>Mera school <u>ABC Public School</u> hai.</p>
+    <p><mark>Important baat highlight kar sakte hain!</mark></p>
+    <p>Purani price: <del>₹500</del> → Naya: <strong>₹299</strong></p>
+    <p>H<sub>2</sub>O aur E=mc<sup>2</sup></p>
+  </div>
+  <h2>Headings:</h2>
+  <h1>H1 - Sabse Bada</h1>
+  <h2>H2 - Thoda Chhota</h2>
+  <h3>H3 - Aur Chhota</h3>
+  <h4>H4 - Chhota</h4>
+</body>
+</html>`,cssCode:``},
+
+  {id:3,emoji:'🔗',title:['Links aur Images','Links and Images'],diff:'easy',
+   desc:['Websites mein links aur images kaise add karte hain.','How to add links and images in websites.'],
+   explain:`<h3>Links kaise banate hain? 🔗</h3>
+<p>Ek page se doosre page par jane ke liye <code style="color:#a78bfa">&lt;a&gt;</code> tag use karte hain. "a" matlab anchor!</p>
+<div class="codex">&lt;<span class="ht">a</span> <span class="ha">href</span>="<span class="hv">https://google.com</span>"&gt;Google&lt;/<span class="ht">a</span>&gt;
+<span class="cm">&lt;!-- New tab mein kholne ke liye --&gt;</span>
+&lt;<span class="ht">a</span> <span class="ha">href</span>="<span class="hv">URL</span>" <span class="ha">target</span>="<span class="hv">_blank</span>"&gt;New Tab&lt;/<span class="ht">a</span>&gt;</div>
+<h3>Images 🖼️</h3>
+<div class="codex">&lt;<span class="ht">img</span> 
+  <span class="ha">src</span>="<span class="hv">image.jpg</span>"
+  <span class="ha">alt</span>="<span class="hv">Image description</span>"
+  <span class="ha">width</span>="<span class="hv">300</span>"
+&gt;</div>
+<div class="cbox"><div class="clabel">Remember</div><p>href = link kahan jata hai | src = image ka path | alt = description (accessibility ke liye zaroori!)</p></div>`,
+   htmlCode:`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #eff6ff; }
+    a { color: #2563eb; text-decoration: none; font-weight: bold; }
+    a:hover { text-decoration: underline; color: #7c3aed; }
+    img { border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,.2); max-width: 100%; }
+    .card { background: white; padding: 20px; border-radius: 14px; box-shadow: 0 2px 10px rgba(0,0,0,.08); margin: 10px 0; }
+  </style>
+</head>
+<body>
+  <h2>🔗 Links Example</h2>
+  <div class="card">
+    <p><a href="https://google.com" target="_blank">🔍 Google par jao</a></p>
+    <p><a href="https://youtube.com" target="_blank">🎥 YouTube dekho</a></p>
+    <p><a href="https://wikipedia.org" target="_blank">📚 Wikipedia padho</a></p>
+  </div>
+  <h2 style="margin-top:20px;">🖼️ Image Example</h2>
+  <div class="card">
+    <img src="https://picsum.photos/400/200?random=1" alt="Random beautiful photo" width="400">
+    <p style="margin-top:10px;color:#6b7280;font-size:14px;">Yeh image internet se aa rahi hai (picsum.photos)</p>
+  </div>
+</body>
+</html>`,cssCode:``},
+
+  {id:4,emoji:'📋',title:['Lists aur Tables','Lists and Tables'],diff:'easy',
+   desc:['ul, ol, li tags se lists banao. Tables se data organize karo.','Create lists with ul, ol, li. Organize data with tables.'],
+   explain:`<h3>Lists 📋</h3>
+<div class="codex"><span class="cm">&lt;!-- Unordered (bullets) --&gt;</span>
+&lt;<span class="ht">ul</span>&gt;
+  &lt;<span class="ht">li</span>&gt;Cricket&lt;/<span class="ht">li</span>&gt;
+  &lt;<span class="ht">li</span>&gt;Football&lt;/<span class="ht">li</span>&gt;
+&lt;/<span class="ht">ul</span>&gt;
+<span class="cm">&lt;!-- Ordered (numbers) --&gt;</span>
+&lt;<span class="ht">ol</span>&gt;
+  &lt;<span class="ht">li</span>&gt;Pehle yeh karo&lt;/<span class="ht">li</span>&gt;
+  &lt;<span class="ht">li</span>&gt;Phir yeh karo&lt;/<span class="ht">li</span>&gt;
+&lt;/<span class="ht">ol</span>&gt;</div>
+<h3>Tables 📊</h3>
+<div class="codex">&lt;<span class="ht">table</span>&gt;
+  &lt;<span class="ht">thead</span>&gt;&lt;<span class="ht">tr</span>&gt;
+    &lt;<span class="ht">th</span>&gt;Naam&lt;/<span class="ht">th</span>&gt;&lt;<span class="ht">th</span>&gt;Marks&lt;/<span class="ht">th</span>&gt;
+  &lt;/<span class="ht">tr</span>&gt;&lt;/<span class="ht">thead</span>&gt;
+  &lt;<span class="ht">tbody</span>&gt;&lt;<span class="ht">tr</span>&gt;
+    &lt;<span class="ht">td</span>&gt;Rahul&lt;/<span class="ht">td</span>&gt;&lt;<span class="ht">td</span>&gt;95&lt;/<span class="ht">td</span>&gt;
+  &lt;/<span class="ht">tr</span>&gt;&lt;/<span class="ht">tbody</span>&gt;
+&lt;/<span class="ht">table</span>&gt;</div>
+<div class="tipbox"><strong>💡 Use Case:</strong> School timetable, cricket scores, marks sheet — sab tables se banta hai!</div>`,
+   htmlCode:`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #fafafa; }
+    ul, ol { margin: 10px 0 10px 20px; }
+    li { margin: 5px 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 16px; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,.1); }
+    th { background: #0369a1; color: white; padding: 12px 16px; text-align: left; }
+    td { padding: 10px 16px; border-bottom: 1px solid #e0f2fe; }
+    tr:nth-child(even) { background: #e0f2fe; }
+    tr:hover { background: #bae6fd; }
+    .pass { color: #059669; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>📋 Meri Favourite Sports</h2>
+  <ul>
+    <li>🏏 Cricket</li>
+    <li>⚽ Football</li>
+    <li>🏸 Badminton</li>
+    <li>♟️ Chess</li>
+  </ul>
+  <h2>Kaam karne ke steps:</h2>
+  <ol>
+    <li>HTML likho</li>
+    <li>CSS se style karo</li>
+    <li>Browser mein dekho</li>
+    <li>Thoda aur improve karo</li>
+  </ol>
+  <h2>📊 Class Result</h2>
+  <table>
+    <thead><tr><th>Naam</th><th>Maths</th><th>Science</th><th>Hindi</th><th>Result</th></tr></thead>
+    <tbody>
+      <tr><td>Rahul</td><td>92</td><td>88</td><td>85</td><td class="pass">PASS ✅</td></tr>
+      <tr><td>Priya</td><td>95</td><td>91</td><td>90</td><td class="pass">PASS ⭐</td></tr>
+      <tr><td>Amit</td><td>78</td><td>80</td><td>72</td><td class="pass">PASS ✅</td></tr>
+    </tbody>
+  </table>
+</body>
+</html>`,cssCode:``},
+
+  {id:5,emoji:'📝',title:['HTML Forms','HTML Forms'],diff:'easy',
+   desc:['Input, button, select se forms banao. User se data lena seekho.','Build forms with input, button, select. Learn to take user data.'],
+   explain:`<h3>HTML Forms 📝 | HTML Forms</h3>
+<p>Forms se user se data lete hain — jaise login page, registration, search box!</p>
+<div class="codex">&lt;<span class="ht">form</span>&gt;
+  &lt;<span class="ht">label</span>&gt;Naam:&lt;/<span class="ht">label</span>&gt;
+  &lt;<span class="ht">input</span> <span class="ha">type</span>="<span class="hv">text</span>" <span class="ha">placeholder</span>="<span class="hv">Apna naam likho</span>"&gt;
+  
+  &lt;<span class="ht">input</span> <span class="ha">type</span>="<span class="hv">email</span>" <span class="ha">placeholder</span>="<span class="hv">email@example.com</span>"&gt;
+  &lt;<span class="ht">input</span> <span class="ha">type</span>="<span class="hv">password</span>" <span class="ha">placeholder</span>="<span class="hv">Password"</span>&gt;
+  &lt;<span class="ht">input</span> <span class="ha">type</span>="<span class="hv">number</span>"&gt;
+  &lt;<span class="ht">input</span> <span class="ha">type</span>="<span class="hv">checkbox</span>"&gt; Yaad rakho
+  &lt;<span class="ht">input</span> <span class="ha">type</span>="<span class="hv">radio</span>"&gt; Option
+  
+  &lt;<span class="ht">select</span>&gt;
+    &lt;<span class="ht">option</span>&gt;Class 8&lt;/<span class="ht">option</span>&gt;
+  &lt;/<span class="ht">select</span>&gt;
+  
+  &lt;<span class="ht">textarea</span>&gt;&lt;/<span class="ht">textarea</span>&gt;
+  &lt;<span class="ht">button</span> <span class="ha">type</span>="<span class="hv">submit</span>"&gt;Submit&lt;/<span class="ht">button</span>&gt;
+&lt;/<span class="ht">form</span>&gt;</div>
+<div class="tipbox"><strong>💡 Note:</strong> CSS se forms ko sundar banao — default forms boring lagte hain!</div>`,
+   htmlCode:`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f0f9ff; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+    .form-card { background: white; padding: 32px; border-radius: 18px; box-shadow: 0 8px 30px rgba(0,0,0,.12); width: 100%; max-width: 400px; }
+    h2 { color: #1e40af; margin-bottom: 20px; text-align: center; }
+    label { display: block; font-size: 13px; font-weight: bold; color: #374151; margin: 12px 0 4px; }
+    input, select, textarea { width: 100%; padding: 10px 14px; border: 1.5px solid #d1d5db; border-radius: 8px; font-size: 14px; box-sizing: border-box; transition: border-color .2s; outline: none; }
+    input:focus, select:focus, textarea:focus { border-color: #3b82f6; }
+    textarea { height: 80px; resize: vertical; }
+    .check-row { display: flex; align-items: center; gap: 8px; margin: 10px 0; }
+    .check-row input { width: auto; }
+    button { width: 100%; background: #2563eb; color: white; border: none; padding: 12px; border-radius: 10px; font-size: 15px; font-weight: bold; cursor: pointer; margin-top: 16px; transition: background .2s; }
+    button:hover { background: #1d4ed8; }
+  </style>
+</head>
+<body>
+  <div class="form-card">
+    <h2>📝 Registration Form</h2>
+    <label>Full Name</label>
+    <input type="text" placeholder="Apna naam likho...">
+    <label>Email</label>
+    <input type="email" placeholder="email@example.com">
+    <label>Class</label>
+    <select>
+      <option>Class 6</option><option>Class 7</option>
+      <option selected>Class 8</option><option>Class 9</option><option>Class 10</option>
+    </select>
+    <label>Message</label>
+    <textarea placeholder="Kuch likhna hai?"></textarea>
+    <div class="check-row">
+      <input type="checkbox" id="agree">
+      <label for="agree" style="margin:0;">I agree to terms</label>
+    </div>
+    <button>Submit Form 🚀</button>
+  </div>
+</body>
+</html>`,cssCode:``},
+
+  {id:6,emoji:'🎨',title:['CSS Colors & Fonts','CSS Colors & Fonts'],diff:'easy',
+   desc:['CSS se colors, fonts, background, gradients style karo.','Style colors, fonts, backgrounds, gradients with CSS.'],
+   explain:`<h3>CSS Syntax 🎨</h3>
+<div class="codex"><span class="ht">selector</span> {
+  <span class="cp">property</span>: <span class="cv">value</span>;
+}
+<span class="cm">/* Example: */</span>
+<span class="ht">h1</span> {
+  <span class="cp">color</span>: <span class="cv">purple</span>;
+  <span class="cp">font-size</span>: <span class="cv">36px</span>;
+  <span class="cp">font-family</span>: <span class="cv">Arial, sans-serif</span>;
+  <span class="cp">font-weight</span>: <span class="cv">bold</span>;
+}</div>
+<div class="cbox"><div class="clabel">Color 3 Tarike | 3 Ways to Write Color</div><p>1. Name: <code>color: red</code><br>2. Hex: <code>color: #ff0000</code><br>3. RGB: <code>color: rgb(255,0,0)</code><br>4. HSL: <code>color: hsl(0,100%,50%)</code></p></div>
+<h3>Gradients 🌈</h3>
+<div class="codex"><span class="ht">div</span> {
+  <span class="cp">background</span>: <span class="cv">linear-gradient(135deg, #6c3fc5, #ff6b35)</span>;
+  <span class="cm">/* ya radial gradient: */</span>
+  <span class="cp">background</span>: <span class="cv">radial-gradient(circle, #a78bfa, #0a0818)</span>;
+}</div>
+<div class="tipbox"><strong>💡 Google Fonts:</strong> fonts.google.com par jao → font choose karo → @import copy karo!</div>`,
+   htmlCode:`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; }
+    .hero {
+      background: linear-gradient(135deg, #6c3fc5, #ff6b35);
+      color: white; text-align: center; padding: 60px 20px;
+    }
+    .hero h1 { font-size: 42px; text-shadow: 0 2px 10px rgba(0,0,0,.3); }
+    .colors { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; padding: 30px 20px; background: #f8fafc; }
+    .swatch { width: 80px; height: 80px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 11px; color: white; font-weight: bold; text-shadow: 0 1px 3px rgba(0,0,0,.5); }
+    .fonts { padding: 30px 20px; max-width: 600px; margin: 0 auto; }
+    .font-demo { margin: 12px 0; padding: 14px 18px; background: white; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1>🎨 CSS Colors & Fonts</h1>
+    <p style="opacity:.85;">Gradient, colors aur fonts ka magic!</p>
+  </div>
+  <div class="colors">
+    <div class="swatch" style="background:#ef4444;">Red #ef4444</div>
+    <div class="swatch" style="background:#f97316;">Orange</div>
+    <div class="swatch" style="background:#eab308;">Yellow</div>
+    <div class="swatch" style="background:#22c55e;">Green</div>
+    <div class="swatch" style="background:#3b82f6;">Blue</div>
+    <div class="swatch" style="background:#8b5cf6;">Purple</div>
+    <div class="swatch" style="background:#ec4899;">Pink</div>
+    <div class="swatch" style="background:#0f172a;">Dark</div>
+  </div>
+  <div class="fonts">
+    <div class="font-demo" style="font-family:serif;font-size:20px;">Serif Font — Traditional</div>
+    <div class="font-demo" style="font-family:sans-serif;font-size:20px;">Sans-Serif — Modern</div>
+    <div class="font-demo" style="font-family:monospace;font-size:20px;">Monospace — Code</div>
+    <div class="font-demo" style="font-family:cursive;font-size:20px;">Cursive — Decorative</div>
+  </div>
+</body>
+</html>`,cssCode:``},
+
+  {id:7,emoji:'📦',title:['CSS Box Model','CSS Box Model'],diff:'medium',
+   desc:['Padding, margin, border — yeh sab kya hote hain aur kaise use karte hain.','What are padding, margin, border and how to use them.'],
+   explain:`<h3>Box Model kya hai? 📦 | What is Box Model?</h3>
+<p>HTML mein har element ek box ki tarah hota hai. Is box mein 4 parts hote hain:</p>
+<div style="text-align:center;margin:14px 0;">
+  <div style="display:inline-block;border:2px dashed var(--yellow);padding:8px;border-radius:8px;background:rgba(251,191,36,.08);color:var(--yellow);font-size:.78rem;">
+    margin (bahar ka space / outer space)
+    <div style="border:2px solid #f87171;padding:7px;margin:7px;border-radius:6px;background:rgba(248,113,113,.08);color:#f87171;">
+      border (rekha / outline)
+      <div style="border:2px dashed #60a5fa;padding:7px;margin:6px;border-radius:5px;background:rgba(96,165,250,.08);color:#60a5fa;">
+        padding (andar ka space / inner space)
+        <div style="background:var(--green);color:#052e16;padding:6px;border-radius:4px;font-weight:800;font-size:.8rem;">Content 🎯</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="codex"><span class="ht">div</span> {
+  <span class="cp">padding</span>: <span class="cv">20px</span>;       <span class="cm">/* andar space */</span>
+  <span class="cp">margin</span>: <span class="cv">10px auto</span>;   <span class="cm">/* bahar space + center */</span>
+  <span class="cp">border</span>: <span class="cv">2px solid red</span>; <span class="cm">/* rekha */</span>
+  <span class="cp">border-radius</span>: <span class="cv">12px</span>;  <span class="cm">/* corners rounded */</span>
+  <span class="cp">width</span>: <span class="cv">300px</span>;
+  <span class="cp">box-shadow</span>: <span class="cv">0 4px 20px rgba(0,0,0,.2)</span>;
+}</div>
+<div class="tipbox"><strong>💡 Shorthand:</strong> <code>padding: 10px 20px</code> = upar-neeche 10px, left-right 20px!</div>`,
+   htmlCode:`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { background: #f1f5f9; font-family: Arial, sans-serif; padding: 20px; }
+    .demo { background: #7c3aed; color: white; width: 220px; padding: 30px; margin: 20px auto;
+      border: 4px solid #fbbf24; border-radius: 14px; text-align: center; font-size: 17px; font-weight: bold;
+      box-shadow: 0 8px 30px rgba(124,58,237,.4); }
+    .row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
+    .box { padding: 14px 22px; border-radius: 10px; font-size: 14px; font-weight: bold; color: white; }
+  </style>
+</head>
+<body>
+  <h2 style="text-align:center;">📦 Box Model Demo</h2>
+  <div class="demo">
+    Main ek Box hoon!<br>🎯 Content here
+  </div>
+  <div class="row">
+    <div class="box" style="background:#059669;border:2px solid #d1fae5;">Small padding</div>
+    <div class="box" style="background:#dc2626;padding:24px 36px;">Big padding</div>
+    <div class="box" style="background:#d97706;margin:20px;border-radius:50px;">Rounded</div>
+    <div class="box" style="background:#0369a1;border:4px dashed #bae6fd;">Dashed border</div>
+  </div>
+</body>
+</html>`,cssCode:``},
+
+  {id:8,emoji:'📐',title:['Flexbox Layout','Flexbox Layout'],diff:'medium',
+   desc:['Flexbox se elements ko side by side, center, ya evenly arrange karo.','Arrange elements side by side, center, or evenly using Flexbox.'],
+   explain:`<h3>Flexbox kya hai? 📐 | What is Flexbox?</h3>
+<p>Flexbox se hum elements ko ek line mein arrange karte hain — horizontal ya vertical!</p>
+<div class="codex"><span class="ht">.container</span> {
+  <span class="cp">display</span>: <span class="cv">flex</span>;
+  <span class="cp">justify-content</span>: <span class="cv">center</span>; <span class="cm">/* horizontal */</span>
+  <span class="cp">align-items</span>: <span class="cv">center</span>;    <span class="cm">/* vertical */</span>
+  <span class="cp">gap</span>: <span class="cv">16px</span>;              <span class="cm">/* beech mein space */</span>
+  <span class="cp">flex-wrap</span>: <span class="cv">wrap</span>;        <span class="cm">/* mobile pe wrap */</span>
+}</div>
+<div class="cbox"><div class="clabel">justify-content options</div><p>flex-start | <strong>center</strong> | flex-end | <strong>space-between</strong> | space-around | space-evenly</p></div>
+<div class="cbox"><div class="clabel">align-items options</div><p>flex-start | <strong>center</strong> | flex-end | stretch | baseline</p></div>
+<div class="tipbox"><strong>💡 Center ka formula:</strong> display:flex + justify-content:center + align-items:center = Kuch bhi center mein!</div>`,
+   htmlCode:`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; background: #0f172a; color: white; }
+    nav { display: flex; justify-content: space-between; align-items: center;
+      background: #7c3aed; padding: 16px 24px; }
+    .logo { font-size: 20px; font-weight: bold; }
+    .links { display: flex; gap: 20px; }
+    .links a { color: white; text-decoration: none; opacity: .85; }
+    .links a:hover { opacity: 1; }
+    .cards { display: flex; gap: 16px; padding: 30px 20px; flex-wrap: wrap; justify-content: center; }
+    .card { background: #1e293b; border-radius: 14px; padding: 24px; width: 150px;
+      text-align: center; font-size: 36px; transition: transform .2s; }
+    .card:hover { transform: scale(1.1); }
+    .card p { font-size: 13px; color: #94a3b8; margin-top: 8px; }
+    .center-box { display: flex; justify-content: center; align-items: center;
+      height: 120px; background: #1e293b; margin: 0 20px 20px; border-radius: 12px; font-size: 17px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">🎨 MySite</div>
+    <div class="links"><a href="#">Home</a><a href="#">About</a><a href="#">Contact</a></div>
+  </nav>
+  <div class="cards">
+    <div class="card">🏏<p>Cricket</p></div>
+    <div class="card">🎮<p>Gaming</p></div>
+    <div class="card">📚<p>Padhai</p></div>
+    <div class="card">🎵<p>Music</p></div>
+    <div class="card">🎨<p>Art</p></div>
+  </div>
+  <div class="center-box">🎯 Mujhe center mein rakha gaya! (flex magic!)</div>
+</body>
+</html>`,cssCode:``},
+
+  {id:9,emoji:'🗂️',title:['CSS Grid','CSS Grid'],diff:'medium',
+   desc:['CSS Grid se 2D layouts banao — rows aur columns dono control karo.','Build 2D layouts with CSS Grid — control both rows and columns.'],
+   explain:`<h3>CSS Grid kya hai? 🗂️ | What is CSS Grid?</h3>
+<p>Grid se hum rows aur columns dono control kar sakte hain — magazine, news, dashboard layouts ke liye perfect!</p>
+<div class="codex"><span class="ht">.grid</span> {
+  <span class="cp">display</span>: <span class="cv">grid</span>;
+  <span class="cp">grid-template-columns</span>: <span class="cv">repeat(3, 1fr)</span>; <span class="cm">/* 3 equal columns */</span>
+  <span class="cp">grid-template-columns</span>: <span class="cv">200px 1fr 2fr</span>; <span class="cm">/* fixed + flexible */</span>
+  <span class="cp">gap</span>: <span class="cv">16px</span>;
+}
+<span class="cm">/* Item ko span karna */</span>
+<span class="ht">.header</span> { <span class="cp">grid-column</span>: <span class="cv">1 / -1</span>; } <span class="cm">/* full width */</span>
+<span class="ht">.sidebar</span> { <span class="cp">grid-row</span>: <span class="cv">2 / 4</span>; } <span class="cm">/* 2 rows span */</span></div>
+<div class="cbox"><div class="clabel">auto-fill / minmax — Responsive Grid</div><p><code>grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))</code><br>Automatically mobile pe 1 column, laptop pe 3-4 columns!</p></div>`,
+   htmlCode:`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; background: #f8fafc; padding: 20px; }
+    .layout { display: grid; grid-template-columns: 200px 1fr; grid-template-rows: auto 1fr auto;
+      gap: 16px; min-height: 80vh; }
+    .header { grid-column: 1 / -1; background: #7c3aed; color: white; padding: 20px;
+      border-radius: 12px; font-size: 20px; font-weight: bold; }
+    .sidebar { background: #1e293b; color: white; padding: 20px; border-radius: 12px; }
+    .sidebar a { display: block; color: #94a3b8; text-decoration: none; padding: 8px 0; border-bottom: 1px solid #334155; }
+    .main { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,.08); }
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+    .card { background: #eff6ff; border-radius: 10px; padding: 16px; text-align: center; }
+    .footer { grid-column: 1 / -1; background: #1e293b; color: #94a3b8; padding: 16px 20px;
+      border-radius: 12px; text-align: center; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <div class="header">🗂️ CSS Grid Layout Demo</div>
+    <div class="sidebar">
+      <p style="font-size:12px;color:#94a3b8;margin-bottom:10px;">MENU</p>
+      <a href="#">🏠 Home</a><a href="#">📚 Lessons</a><a href="#">🏆 Projects</a><a href="#">📞 Contact</a>
+    </div>
+    <div class="main">
+      <h2 style="margin-bottom:16px;">📦 Cards Grid</h2>
+      <div class="cards">
+        <div class="card">🏏<p>Cricket</p></div>
+        <div class="card">🎮<p>Gaming</p></div>
+        <div class="card">🎨<p>Art</p></div>
+        <div class="card">📚<p>Books</p></div>
+        <div class="card">🎵<p>Music</p></div>
+        <div class="card">🔬<p>Science</p></div>
+      </div>
+    </div>
+    <div class="footer">Made with CSS Grid ❤️</div>
+  </div>
+</body>
+</html>`,cssCode:``},
+
+  {id:10,emoji:'✨',title:['CSS Animations & Transitions','CSS Animations & Transitions'],diff:'medium',
+   desc:['@keyframes aur transition se moving, bouncing, fading animations banao.','Create moving, bouncing, fading animations with @keyframes and transition.'],
+   explain:`<h3>Transitions 🔄 | Transitions</h3>
+<p>Jab koi cheez change ho (hover pe) tab smooth change ke liye:</p>
+<div class="codex"><span class="ht">button</span> {
+  <span class="cp">background</span>: <span class="cv">blue</span>;
+  <span class="cp">transition</span>: <span class="cv">all 0.3s ease</span>;
+}
+<span class="ht">button</span>:hover {
+  <span class="cp">background</span>: <span class="cv">purple</span>;
+  <span class="cp">transform</span>: <span class="cv">scale(1.1)</span>;
+}</div>
+<h3>@keyframes Animations ✨</h3>
+<div class="codex"><span class="cp">@keyframes</span> <span class="ht">bounce</span> {
+  <span class="hv">0%, 100%</span> { <span class="cp">transform</span>: <span class="cv">translateY(0)</span>; }
+  <span class="hv">50%</span> { <span class="cp">transform</span>: <span class="cv">translateY(-30px)</span>; }
+}
+<span class="ht">.box</span> {
+  <span class="cp">animation</span>: <span class="cv">bounce 1s ease-in-out infinite</span>;
+  <span class="cm">/* name | duration | timing | iteration */</span>
+}</div>
+<div class="cbox"><div class="clabel">Transform Properties</div><p>translateX/Y (move) | scale (size) | rotate (ghoomana) | skew (tilt)</p></div>`,
+   htmlCode:`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { background: #0f0c1d; font-family: Arial, sans-serif; text-align: center; padding: 30px; color: white; }
+    @keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-40px);} }
+    @keyframes spin { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+    @keyframes pulse { 0%,100%{transform:scale(1);opacity:1;} 50%{transform:scale(1.15);opacity:.7;} }
+    @keyframes slide { 0%{transform:translateX(-100px);opacity:0;} 100%{transform:translateX(0);opacity:1;} }
+    .ball { width:60px;height:60px;background:#f59e0b;border-radius:50%;display:inline-block;animation:bounce .8s ease-in-out infinite; }
+    .star { font-size:48px;display:inline-block;animation:spin 2s linear infinite; }
+    .heart { font-size:48px;display:inline-block;animation:pulse 1s ease infinite; }
+    .slide-txt { font-size:22px;color:#a78bfa;animation:slide .6s ease forwards; }
+    .cool-btn { background:#7c3aed;color:white;border:none;padding:14px 28px;border-radius:10px;font-size:16px;cursor:pointer;transition:all .3s ease;margin:6px; }
+    .cool-btn:hover { background:#f59e0b;color:black;transform:scale(1.1) rotate(-2deg);box-shadow:0 10px 30px rgba(245,158,11,.4); }
+    .row { display:flex;gap:40px;justify-content:center;align-items:center;margin:24px 0;flex-wrap:wrap; }
+  </style>
+</head>
+<body>
+  <h2>✨ CSS Animations</h2>
+  <div class="slide-txt">🎉 Main slide hoke aaya! (animation)</div>
+  <div class="row">
+    <div><div class="ball"></div><p style="margin-top:8px;font-size:12px;color:#888;">bounce</p></div>
+    <div><div class="star">⭐</div><p style="margin-top:8px;font-size:12px;color:#888;">spin</p></div>
+    <div><div class="heart">❤️</div><p style="margin-top:8px;font-size:12px;color:#888;">pulse</p></div>
+  </div>
+  <p>Hover karo in buttons pe:</p>
+  <button class="cool-btn">Hover Karo! 🎉</button>
+  <button class="cool-btn">Mujhe bhi! 🚀</button>
+  <button class="cool-btn">Aur mujhe! 🎨</button>
+</body>
+</html>`,cssCode:``},
+
+  {id:11,emoji:'📱',title:['Responsive Design','Responsive Design'],diff:'medium',
+   desc:['@media queries se mobile, tablet, laptop sab pe website sahi dikhe.','Use @media queries to make website look right on mobile, tablet, laptop.'],
+   explain:`<h3>Responsive Design 📱 | Responsive Design</h3>
+<p>Ek hi website mobile pe bhi sahi dikhni chahiye aur laptop pe bhi! Iske liye <strong>@media queries</strong> use karte hain.</p>
+<div class="codex"><span class="cm">/* Default: Laptop layout */</span>
+<span class="ht">.grid</span> { <span class="cp">grid-template-columns</span>: <span class="cv">repeat(3, 1fr)</span>; }
+
+<span class="cm">/* Tablet (max 768px) */</span>
+<span class="ht">@media</span> (<span class="cp">max-width</span>: <span class="cv">768px</span>) {
+  <span class="ht">.grid</span> { <span class="cp">grid-template-columns</span>: <span class="cv">repeat(2, 1fr)</span>; }
+}
+<span class="cm">/* Mobile (max 480px) */</span>
+<span class="ht">@media</span> (<span class="cp">max-width</span>: <span class="cv">480px</span>) {
+  <span class="ht">.grid</span> { <span class="cp">grid-template-columns</span>: <span class="cv">1fr</span>; }
+  <span class="ht">.nav-links</span> { <span class="cp">display</span>: <span class="cv">none</span>; }
+}</div>
+<div class="cbox"><div class="clabel">Viewport Meta Tag — ZAROORI!</div><p><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code><br>Yeh &lt;head&gt; mein hona chahiye — mobile pe sahi dikhne ke liye!</p></div>
+<div class="tipbox"><strong>💡 Mobile First:</strong> Pehle mobile design karo, phir laptop ke liye bado! min-width use karo.</div>`,
+   htmlCode:`<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; background: #f8fafc; }
+    nav { background: #7c3aed; color: white; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .nav-links { display: flex; gap: 16px; }
+    .nav-links a { color: white; text-decoration: none; font-size: 14px; }
+    .hero { background: linear-gradient(135deg,#6c3fc5,#ff6b35); color: white; padding: 60px 20px; text-align: center; }
+    .hero h1 { font-size: 42px; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 30px 20px; max-width: 900px; margin: 0 auto; }
+    .card { background: white; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+    .card .icon { font-size: 36px; }
+    /* Tablet */
+    @media (max-width: 768px) {
+      .cards { grid-template-columns: repeat(2, 1fr); }
+      .hero h1 { font-size: 28px; }
+    }
+    /* Mobile */
+    @media (max-width: 480px) {
+      .cards { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hero h1 { font-size: 22px; }
+      .hero { padding: 40px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div style="font-size:18px;font-weight:bold;">🎨 MySite</div>
+    <div class="nav-links"><a href="#">Home</a><a href="#">About</a><a href="#">Projects</a><a href="#">Contact</a></div>
+  </nav>
+  <div class="hero"><h1>📱 Responsive Website!</h1><p style="margin-top:10px;opacity:.85;">Screen resize karo aur dekho kya hota hai!</p></div>
+  <div class="cards">
+    <div class="card"><div class="icon">🏏</div><h3>Cricket</h3><p>India ka national sport</p></div>
+    <div class="card"><div class="icon">📚</div><h3>Padhai</h3><p>Knowledge hi power hai</p></div>
+    <div class="card"><div class="icon">🎨</div><h3>Art</h3><p>Creative bano!</p></div>
+    <div class="card"><div class="icon">🔬</div><h3>Science</h3><p>Duniya samjho</p></div>
+    <div class="card"><div class="icon">🎮</div><h3>Gaming</h3><p>Fun + learning</p></div>
+    <div class="card"><div class="icon">🌐</div><h3>Web Dev</h3><p>Future is digital!</p></div>
+  </div>
+</body>
+</html>`,cssCode:``},
+
+  {id:12,emoji:'🎭',title:['CSS Variables & Advanced','CSS Variables & Advanced'],diff:'hard',
+   desc:['CSS Variables (custom properties), pseudo-classes, pseudo-elements seekho.','Learn CSS Variables, pseudo-classes, and pseudo-elements.'],
+   explain:`<h3>CSS Variables 🎭 | CSS Custom Properties</h3>
+<p>CSS Variables ek baar define karo, sab jagah use karo! Theme change karna bahut aasan ho jata hai.</p>
+<div class="codex"><span class="cm">/* Variables define karo :root mein */</span>
+<span class="ht">:root</span> {
+  <span class="cp">--primary</span>: <span class="cv">#7c3aed</span>;
+  <span class="cp">--text</span>: <span class="cv">#1a1a2e</span>;
+  <span class="cp">--radius</span>: <span class="cv">12px</span>;
+}
+<span class="cm">/* Use karo var() se */</span>
+<span class="ht">button</span> {
+  <span class="cp">background</span>: <span class="cv">var(--primary)</span>;
+  <span class="cp">border-radius</span>: <span class="cv">var(--radius)</span>;
+}</div>
+<h3>Pseudo-classes & Elements</h3>
+<div class="codex"><span class="ht">a</span>:hover { <span class="cp">color</span>: <span class="cv">red</span>; }       <span class="cm">/* mouse hover */</span>
+<span class="ht">input</span>:focus { <span class="cp">border-color</span>: <span class="cv">blue</span>; } <span class="cm">/* focus */</span>
+<span class="ht">li</span>:nth-child(2) { <span class="cp">color</span>: <span class="cv">green</span>; } <span class="cm">/* 2nd item */</span>
+<span class="ht">p</span>::first-line { <span class="cp">font-size</span>: <span class="cv">1.2em</span>; } <span class="cm">/* pehli line */</span>
+<span class="ht">div</span>::before { <span class="cp">content</span>: <span class="cv">"★"</span>; }  <span class="cm">/* pehle add */</span>
+<span class="ht">div</span>::after { <span class="cp">content</span>: <span class="cv">"✓"</span>; }   <span class="cm">/* baad mein */</span></div>`,
+   htmlCode:`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    :root {
+      --primary: #7c3aed; --accent: #f59e0b;
+      --bg: #0f172a; --card: #1e293b; --text: #e2e8f0;
+      --radius: 14px; --shadow: 0 8px 30px rgba(0,0,0,.3);
+    }
+    body { font-family: Arial, sans-serif; background: var(--bg); color: var(--text); padding: 24px; }
+    h2 { color: var(--accent); margin-bottom: 20px; }
+    .cards { display: flex; gap: 14px; flex-wrap: wrap; }
+    .card { background: var(--card); border-radius: var(--radius); padding: 20px; width: 160px;
+      text-align: center; box-shadow: var(--shadow); transition: all .3s; position: relative; overflow: hidden; }
+    .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--primary); transform: scaleX(0); transition: transform .3s; }
+    .card:hover { transform: translateY(-6px); }
+    .card:hover::before { transform: scaleX(1); }
+    .card:nth-child(odd) { border-bottom: 3px solid var(--primary); }
+    .card:nth-child(even) { border-bottom: 3px solid var(--accent); }
+    .card .icon { font-size: 36px; }
+    .card h3 { font-size: 14px; margin-top: 8px; color: var(--accent); }
+    input { background: var(--card); border: 2px solid #334155; color: var(--text); padding: 10px 14px;
+      border-radius: var(--radius); font-size: 14px; outline: none; width: 100%; max-width: 300px; margin-top: 20px; }
+    input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(124,58,237,.2); }
+    p::first-line { font-size: 1.1em; font-weight: bold; color: var(--accent); }
+  </style>
+</head>
+<body>
+  <h2>🎭 CSS Variables Demo</h2>
+  <p>Yeh paragraph ki pehli line bold aur colored hai (::first-line pseudo-element).<br>Baaki sab normal text hai.</p>
+  <div class="cards" style="margin:20px 0;">
+    <div class="card"><div class="icon">🚀</div><h3>Space</h3></div>
+    <div class="card"><div class="icon">🎨</div><h3>Design</h3></div>
+    <div class="card"><div class="icon">💻</div><h3>Code</h3></div>
+    <div class="card"><div class="icon">🌐</div><h3>Web</h3></div>
+  </div>
+  <p>Focus karo input pe (click karo):</p>
+  <input type="text" placeholder="Click here to focus...">
+</body>
+</html>`,cssCode:``},
+
+  {id:13,emoji:'🌐',title:['Final Project: Portfolio','Final Project: Portfolio'],diff:'hard',
+   desc:['Ab tak seekha sab use karke apna portfolio website banao!','Use everything learned so far to build your own portfolio website!'],
+   explain:`<h3>🎉 Final Project — Portfolio!</h3>
+<p>Ab tak humne seekha:</p>
+<ul>
+  <li>HTML Structure, Tags, Forms</li>
+  <li>CSS Colors, Fonts, Box Model</li>
+  <li>Flexbox aur Grid layouts</li>
+  <li>Animations aur Transitions</li>
+  <li>Responsive Design</li>
+  <li>CSS Variables</li>
+</ul>
+<p style="margin-top:12px;">Ab in sab ko milake apna <strong>Personal Portfolio</strong> banao!</p>
+<div class="cbox"><div class="clabel">Portfolio mein hona chahiye | Should Include</div><p>✅ Hero section with naam<br>✅ About me<br>✅ Skills section<br>✅ Projects showcase<br>✅ Contact info<br>✅ Responsive (mobile friendly)</p></div>
+<div class="tipbox"><strong>🏆 Challenge:</strong> "Apna Naam" ki jagah apna real naam likho aur apne school ka naam add karo!</div>`,
+   htmlCode:`<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mera Portfolio</title>
+  <style>
+    :root { --p:#6c3fc5;--a:#ff6b35;--g:#22c55e;--bg:#0a0818;--card:#131124;--text:#e8e0ff;--muted:#8070a8; }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--text);}
+    header{background:linear-gradient(135deg,var(--p),var(--a));padding:70px 20px;text-align:center;}
+    .avatar{width:110px;height:110px;border-radius:50%;border:4px solid white;font-size:52px;
+      background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;
+      margin:0 auto 18px;animation:float 3s ease-in-out infinite;}
+    @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+    header h1{font-size:clamp(24px,5vw,40px);}
+    header p{opacity:.9;margin-top:8px;font-size:clamp(14px,3vw,18px);}
+    nav{display:flex;justify-content:center;gap:8px;padding:16px;background:rgba(0,0,0,.3);flex-wrap:wrap;}
+    nav a{color:rgba(255,255,255,.8);text-decoration:none;padding:7px 16px;border-radius:20px;font-size:13px;border:1px solid rgba(255,255,255,.2);transition:all .2s;}
+    nav a:hover{background:var(--p);border-color:var(--p);color:white;}
+    .sec{padding:40px 20px;max-width:800px;margin:0 auto;}
+    .sec h2{font-size:22px;margin-bottom:18px;color:#a78bfa;}
+    .skills{display:flex;gap:9px;flex-wrap:wrap;}
+    .skill{background:var(--card);border:1px solid #2e2650;padding:8px 16px;border-radius:18px;font-size:13px;color:#c4b5fd;transition:all .3s;cursor:default;}
+    .skill:hover{background:var(--p);border-color:var(--p);color:white;transform:scale(1.06);}
+    .projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;}
+    .proj{background:var(--card);border:1px solid #2e2650;border-radius:14px;padding:20px;text-align:center;transition:all .3s;}
+    .proj:hover{border-color:var(--p);transform:translateY(-5px);box-shadow:0 8px 25px rgba(108,63,197,.3);}
+    .proj .ic{font-size:34px;margin-bottom:10px;}
+    .proj h3{font-size:14px;margin-bottom:5px;}
+    .proj p{font-size:12px;color:var(--muted);}
+    .about-box{background:var(--card);border:1px solid #2e2650;border-left:4px solid var(--p);border-radius:12px;padding:20px;font-size:14px;color:var(--muted);line-height:1.8;}
+    .contact{display:flex;gap:10px;flex-wrap:wrap;}
+    .ci{background:var(--card);border:1px solid #2e2650;border-radius:10px;padding:11px 16px;font-size:13px;color:#c4b5fd;}
+    footer{text-align:center;padding:28px;color:var(--muted);font-size:12px;border-top:1px solid #1a1535;}
+    @media(max-width:480px){header{padding:50px 16px;}.sec{padding:28px 16px;}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="avatar">🧑‍💻</div>
+    <h1>Apna Naam Yahan Likho</h1>
+    <p>🎓 Student | Future Web Developer | India 🇮🇳</p>
+  </header>
+  <nav>
+    <a href="#about">About</a><a href="#skills">Skills</a>
+    <a href="#projects">Projects</a><a href="#contact">Contact</a>
+  </nav>
+  <div id="about" class="sec">
+    <h2>👋 About Me</h2>
+    <div class="about-box">Main ek passionate student hoon jo web development seekh raha/rahi hoon. HTML aur CSS seekhne ke baad ab main real websites banana chahta/chahti hoon. Mujhe coding, cricket aur drawing bahut pasand hai! 🚀</div>
+  </div>
+  <div id="skills" class="sec">
+    <h2>🛠️ Meri Skills</h2>
+    <div class="skills">
+      <div class="skill">HTML 🌐</div><div class="skill">CSS 🎨</div>
+      <div class="skill">Cricket 🏏</div><div class="skill">Problem Solving 🧠</div>
+      <div class="skill">Drawing ✏️</div><div class="skill">Teamwork 🤝</div>
+      <div class="skill">Maths 🔢</div><div class="skill">Science 🔬</div>
+    </div>
+  </div>
+  <div id="projects" class="sec">
+    <h2>💼 Mere Projects</h2>
+    <div class="projects">
+      <div class="proj"><div class="ic">🌐</div><h3>Pehli Website</h3><p>HTML se banai pehli webpage</p></div>
+      <div class="proj"><div class="ic">🎨</div><h3>Art Gallery</h3><p>CSS Grid se banai gallery</p></div>
+      <div class="proj"><div class="ic">📱</div><h3>Mobile App UI</h3><p>Responsive design project</p></div>
+      <div class="proj"><div class="ic">🏆</div><h3>Quiz App</h3><p>Interactive quiz website</p></div>
+    </div>
+  </div>
+  <div id="contact" class="sec">
+    <h2>📬 Contact</h2>
+    <div class="contact">
+      <div class="ci">📧 tumhara@email.com</div>
+      <div class="ci">🏫 Tumhara School</div>
+      <div class="ci">📍 India 🇮🇳</div>
+    </div>
+  </div>
+  <footer>Made with ❤️ using HTML &amp; CSS | Seekha HTML CSS Seekho se! 🎨</footer>
+</body>
+</html>`,cssCode:``}
+];
+
+// ===== RENDER ROADMAP =====
+function renderRoadmap(){
+  const grid=document.getElementById('roadmap-grid');
+  grid.innerHTML=lessons.map(l=>`
+    <div class="rm-card reveal" onclick="openLesson(${l.id})" style="cursor:pointer;">
+      <div class="rm-num">Lesson ${l.id}</div>
+      <div class="rm-icon">${l.emoji}</div>
+      <h4>${l.title[lang==='en'?1:0]}</h4>
+      <p>${l.desc[lang==='en'?1:0]}</p>
+      <div class="diff ${l.diff}">${l.diff==='easy'?'🟢 Aasan':l.diff==='medium'?'🟡 Thoda Mushkil':'🔴 Challenge!'}</div>
+    </div>
+  `).join('');
+  setTimeout(initReveal,100);
+}
+
+// ===== LESSON VIEWER =====
+let curLesson=null, curTab='html';
+
+function openLesson(id){
+  const l=lessons.find(x=>x.id===id); if(!l) return;
+  curLesson=l;
+  document.getElementById('lv-num').textContent=`LESSON ${l.id} — ${l.diff.toUpperCase()}`;
+  document.getElementById('lv-title').textContent=`${l.emoji} ${l.title[lang==='en'?1:0]}`;
+  document.getElementById('lv-explain').innerHTML=l.explain;
+  document.getElementById('ed-html').value=l.htmlCode;
+  document.getElementById('ed-css').value=l.cssCode;
+  switchTab('html');
+  const v=document.getElementById('lesson-viewer');
+  v.style.display='block';
+  v.scrollIntoView({behavior:'smooth',block:'start'});
+  if(!l._opened){l._opened=true;stats.lessons++;stats.xp+=30;updateStats();}
+}
+
+function closeLesson(){
+  document.getElementById('lesson-viewer').style.display='none';
+  document.getElementById('roadmap').scrollIntoView({behavior:'smooth'});
+}
+
+function switchTab(t){
+  curTab=t;
+  ['html','css','prev'].forEach(x=>{
+    document.getElementById('etab-'+x).classList.toggle('active',x===t);
+  });
+  document.getElementById('ed-html').style.display=t==='html'?'block':'none';
+  document.getElementById('ed-css').style.display=t==='css'?'block':'none';
+  const pp=document.getElementById('prev-panel');
+  pp.style.display=t==='preview'?'flex':'none';
+  if(t==='preview') renderPreview();
+}
+
+// Sirf iframe render karta hai — switchTab() ko dobara call NAHI karta,
+// isse purani mutual-recursion loop (switchTab ↔ runCode) khatam ho gayi
+// jo mobile jaise slow devices pe lag/crash ka sabse bada karan thi.
+function renderPreview(){
+  try{
+    const html=document.getElementById('ed-html').value;
+    const css=document.getElementById('ed-css').value;
+    const f=document.getElementById('lesson-frame');
+    f.srcdoc=buildPreviewDoc(html,css);
+    showErr('lesson-err','');
+  }catch(e){
+    showErr('lesson-err', lang==='en' ? 'Something went wrong while running the code. Check your tags.' : 'Code run karte waqt kuch galat ho gaya. Apne tags check karo.');
+  }
+}
+
+// Har student ki galti (missing <head>, missing <html>, adhoora tag) ke bawajood
+// CSS aur HTML preview mein sahi se run ho — koi bhi tag chhoote code na atke.
+function buildPreviewDoc(html,css){
+  let c=(html||'').toString();
+  if(css&&css.trim()){
+    const style=`<style>${css}</style>`;
+    if(c.includes('</head>'))      c=c.replace('</head>',style+'</head>');
+    else if(c.includes('<head>'))  c=c.replace('<head>','<head>'+style);
+    else if(c.includes('<html>'))  c=c.replace('<html>','<html><head>'+style+'</head>');
+    else if(c.includes('<body>'))  c=c.replace('<body>',style+'<body>');
+    else                            c=style+c; // koi structure tag nahi mila, phir bhi CSS apply ho
+  }
+  return c;
+}
+
+function showErr(id,msg){
+  const el=document.getElementById(id);
+  if(!el) return;
+  if(msg){ el.textContent='⚠️ '+msg; el.classList.add('show'); }
+  else{ el.textContent=''; el.classList.remove('show'); }
+}
+
+function showToast(msg){
+  const wrap=document.getElementById('toast-wrap');
+  const t=document.createElement('div');
+  t.className='toast'; t.textContent=msg;
+  wrap.appendChild(t);
+  requestAnimationFrame(()=>t.classList.add('show'));
+  setTimeout(()=>{ t.classList.remove('show'); setTimeout(()=>t.remove(),300); },1800);
+}
+
+function runCode(){
+  switchTab('preview'); // ye khud renderPreview() call karega
+  stats.runs++;stats.xp+=5;updateStats();
+}
+
+function resetCode(){
+  if(!curLesson) return;
+  document.getElementById('ed-html').value=curLesson.htmlCode;
+  document.getElementById('ed-css').value=curLesson.cssCode;
+  showErr('lesson-err','');
+  // Agar Preview tab khula hai to usse turant refresh karo, warna HTML tab pe wapas le jao
+  if(curTab==='preview') renderPreview(); else switchTab('html');
+  showToast(lang==='en' ? '↺ Code reset!' : '↺ Code reset ho gaya!');
+}
+
+function copyCode(){
+  const t=curTab==='css'?document.getElementById('ed-css').value:document.getElementById('ed-html').value;
+  navigator.clipboard&&navigator.clipboard.writeText(t).then(()=>{
+    const b=document.querySelector('.copy-btn');
+    const orig=b.innerHTML; b.innerHTML='✅ Copied!';
+    setTimeout(()=>{b.innerHTML=orig;},1500);
+  });
+}
+
+// ===== PLAYGROUND =====
+const pgDefault=`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: Arial, sans-serif; background: linear-gradient(135deg, #667eea, #764ba2); min-height: 100vh; display: flex; align-items: center; justify-content: center; margin: 0; }
+    .box { background: white; padding: 40px; border-radius: 20px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,.3); animation: pop .5s ease; }
+    @keyframes pop { 0%{transform:scale(.5);opacity:0;} 100%{transform:scale(1);opacity:1;} }
+    h1 { color: #7c3aed; font-size: 28px; }
+    .emoji { font-size: 60px; animation: spin 3s linear infinite; display: inline-block; }
+    @keyframes spin { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="emoji">🎨</div>
+    <h1>Namaste! Main Developer Hoon!</h1>
+    <p>Yeh playground hai — code badlo aur dekho! ✨</p>
+  </div>
+</body>
+</html>`;
+
+document.getElementById('pg-code').value=pgDefault;
+
+function runPG(){
+  try{
+    const code=document.getElementById('pg-code').value;
+    document.getElementById('pg-frame').srcdoc=code;
+    showErr('pg-err','');
+    stats.runs++;stats.xp+=5;updateStats();
+  }catch(e){
+    showErr('pg-err', lang==='en' ? 'Something went wrong while running the code. Check your tags.' : 'Code run karte waqt kuch galat ho gaya. Apne tags check karo.');
+  }
+}
+function resetPG(){
+  document.getElementById('pg-code').value=pgDefault;
+  showErr('pg-err','');
+  runPG();
+  showToast(lang==='en' ? '↺ Code reset!' : '↺ Code reset ho gaya!');
+}
+runPG();
+
+// Snippets
+const snips={
+  h1:`<h1>Mera Heading 🎉</h1>\n`,
+  p:`<p>Yeh ek paragraph hai. Apna text yahan likho.</p>\n`,
+  img:`<img src="https://picsum.photos/300/200?random=${Math.floor(Math.random()*99)}" alt="Photo" style="border-radius:10px;max-width:100%;">\n`,
+  btn:`<button style="background:#7c3aed;color:white;padding:12px 24px;border:none;border-radius:10px;font-size:16px;cursor:pointer;transition:all .2s;" onmouseover="this.style.background='#f59e0b'" onmouseout="this.style.background='#7c3aed'">Click Karo! 🚀</button>\n`,
+  div:`<div style="background:#e0e7ff;padding:20px;border-radius:12px;margin:10px 0;">\n  Yahan content likho\n</div>\n`,
+  a:`<a href="https://google.com" target="_blank" style="color:#7c3aed;font-size:18px;font-weight:bold;">🔗 Google par jao</a>\n`,
+  ul:`<ul style="font-size:16px;line-height:2;">\n  <li>Pehli cheez</li>\n  <li>Doosri cheez</li>\n  <li>Teesri cheez</li>\n</ul>\n`,
+  table:`<table border="1" style="border-collapse:collapse;width:100%;border-radius:10px;overflow:hidden;">\n  <tr style="background:#7c3aed;color:white;">\n    <th style="padding:10px;">Naam</th><th style="padding:10px;">Marks</th>\n  </tr>\n  <tr><td style="padding:8px;">Rahul</td><td style="padding:8px;">95</td></tr>\n  <tr style="background:#f3f4f6;"><td style="padding:8px;">Priya</td><td style="padding:8px;">88</td></tr>\n</table>\n`,
+  form:`<div style="background:white;padding:24px;border-radius:14px;max-width:320px;box-shadow:0 4px 20px rgba(0,0,0,.1);">\n  <h3>Contact Form</h3>\n  <input type="text" placeholder="Naam..." style="width:100%;padding:10px;margin:8px 0;border:1.5px solid #d1d5db;border-radius:8px;font-size:14px;box-sizing:border-box;">\n  <input type="email" placeholder="Email..." style="width:100%;padding:10px;margin:8px 0;border:1.5px solid #d1d5db;border-radius:8px;font-size:14px;box-sizing:border-box;">\n  <button style="width:100%;background:#7c3aed;color:white;border:none;padding:11px;border-radius:8px;font-weight:bold;cursor:pointer;margin-top:6px;">Submit 🚀</button>\n</div>\n`,
+  flex:`<div style="display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap;padding:20px;background:#f0fdf4;border-radius:12px;">\n  <div style="background:#22c55e;color:white;padding:16px 24px;border-radius:10px;">Flex Item 1</div>\n  <div style="background:#16a34a;color:white;padding:16px 24px;border-radius:10px;">Flex Item 2</div>\n  <div style="background:#15803d;color:white;padding:16px 24px;border-radius:10px;">Flex Item 3</div>\n</div>\n`,
+  grid:`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:16px;">\n  <div style="background:#818cf8;color:white;padding:20px;border-radius:10px;text-align:center;">1</div>\n  <div style="background:#6366f1;color:white;padding:20px;border-radius:10px;text-align:center;">2</div>\n  <div style="background:#4f46e5;color:white;padding:20px;border-radius:10px;text-align:center;">3</div>\n  <div style="background:#4338ca;color:white;padding:20px;border-radius:10px;text-align:center;grid-column:1/-1;">Full Width</div>\n</div>\n`,
+  anim:`<style>\n@keyframes myAnim {\n  0%{transform:scale(1);background:#7c3aed;}\n  50%{transform:scale(1.2) rotate(10deg);background:#f59e0b;}\n  100%{transform:scale(1);background:#7c3aed;}\n}\n.animated-box{\n  width:100px;height:100px;\n  background:#7c3aed;border-radius:12px;\n  margin:20px auto;\n  display:flex;align-items:center;justify-content:center;\n  color:white;font-size:36px;\n  animation:myAnim 2s ease infinite;\n}\n</style>\n<div class="animated-box">✨</div>\n`
+};
+
+function snippet(type){
+  const ta=document.getElementById('pg-code');
+  const pos=ta.selectionStart;
+  const s=snips[type]||'';
+  ta.value=ta.value.slice(0,pos)+s+ta.value.slice(pos);
+  ta.focus(); ta.setSelectionRange(pos+s.length,pos+s.length);
+}
+
+// Tab key support
+document.querySelectorAll('textarea').forEach(ta=>{
+  ta.addEventListener('keydown',e=>{
+    if(e.key==='Tab'){
+      e.preventDefault();
+      const s=ta.selectionStart,en=ta.selectionEnd;
+      ta.value=ta.value.substring(0,s)+'  '+ta.value.substring(en);
+      ta.selectionStart=ta.selectionEnd=s+2;
+    }
+  });
+});
+
+// ===== PROJECTS =====
+const projects=[
+  {emoji:'🎴',tag:'Beginner Project',title:['Visiting Card Website','Visiting Card Website'],
+   desc:['CSS Box Model aur Flexbox use karke apna digital visiting card banao.','Use CSS Box Model and Flexbox to build your digital visiting card.'],
+   skills:['HTML','CSS','Flexbox']},
+  {emoji:'📰',tag:'Layout Project',title:['News Article Page','News Article Page'],
+   desc:['Typography, images aur CSS Grid use karke newspaper-style article banao.','Build a newspaper-style article using typography, images and CSS Grid.'],
+   skills:['HTML','CSS Grid','Typography']},
+  {emoji:'🛍️',tag:'UI Project',title:['Product Card UI','Product Card UI'],
+   desc:['E-commerce product card banao hover effects, image aur button ke sath.','Build an e-commerce product card with hover effects, image and button.'],
+   skills:['HTML','CSS','Transitions']},
+  {emoji:'⏱️',tag:'CSS Only',title:['CSS Loader Animation','CSS Loader Animation'],
+   desc:['Sirf CSS se loading spinner banao — koi JavaScript nahi!','Create a loading spinner using only CSS — no JavaScript!'],
+   skills:['CSS','@keyframes','No JS']},
+  {emoji:'📱',tag:'Responsive Project',title:['Responsive Landing Page','Responsive Landing Page'],
+   desc:['Mobile aur desktop dono ke liye sahi dikhne wali landing page banao.','Build a landing page that looks great on both mobile and desktop.'],
+   skills:['HTML','CSS','Media Queries','Grid']},
+  {emoji:'🌐',tag:'Portfolio Project',title:['Personal Portfolio','Personal Portfolio'],
+   desc:['Apni poori portfolio website banao — hero, skills, projects, contact sab.','Build your complete portfolio — hero, skills, projects, contact all included.'],
+   skills:['HTML','CSS','Flexbox','Grid','Animations']}
+];
+
+function renderProjects(){
+  const g=document.getElementById('proj-grid');
+  g.innerHTML=projects.map((p,i)=>`
+    <div class="proj-card reveal" onclick="loadProject(${i})" style="cursor:pointer;">
+      <div class="proj-icon">${p.emoji}</div>
+      <div class="proj-tag">${p.tag}</div>
+      <h3>${p.title[lang==='en'?1:0]}</h3>
+      <p>${p.desc[lang==='en'?1:0]}</p>
+      <div class="proj-skills">${p.skills.map(s=>`<span class="proj-skill">${s}</span>`).join('')}</div>
+    </div>
+  `).join('');
+  setTimeout(initReveal,100);
+}
+
+function loadProject(i){
+  const p=projects[i];
+  // Open project in playground
+  document.getElementById('playground').scrollIntoView({behavior:'smooth'});
+  setTimeout(()=>{
+    const code=getProjectCode(i);
+    document.getElementById('pg-code').value=code;
+    runPG();
+  },600);
+}
+
+function getProjectCode(i){
+  const codes=[
+`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body{background:#1a1535;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;font-family:'Segoe UI',Arial,sans-serif;}
+    .card{background:white;border-radius:20px;padding:36px;text-align:center;width:280px;box-shadow:0 20px 60px rgba(0,0,0,.4);}
+    .avatar{width:90px;height:90px;background:linear-gradient(135deg,#7c3aed,#ff6b35);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:40px;}
+    h2{color:#1a1535;font-size:22px;}
+    .role{color:#7c3aed;font-size:13px;font-weight:bold;margin:4px 0 16px;}
+    .info{text-align:left;font-size:13px;color:#4b5563;line-height:2.2;}
+    .info span{display:flex;gap:10px;align-items:center;}
+    .divider{height:1px;background:#f3f4f6;margin:16px 0;}
+    .btn{display:block;background:#7c3aed;color:white;text-align:center;padding:10px;border-radius:10px;text-decoration:none;font-weight:bold;font-size:13px;margin-top:16px;transition:background .2s;}
+    .btn:hover{background:#6d28d9;}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="avatar">🧑‍💻</div>
+    <h2>Apna Naam Likho</h2>
+    <div class="role">Web Developer | Student</div>
+    <div class="divider"></div>
+    <div class="info">
+      <span>📧 tumhara@email.com</span>
+      <span>📞 +91 9876543210</span>
+      <span>🏫 Tumhara School</span>
+      <span>📍 India 🇮🇳</span>
+    </div>
+    <a href="#" class="btn">Connect Karo! 🚀</a>
+  </div>
+</body>
+</html>`,
+`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body{font-family:Georgia,serif;background:#fafaf8;padding:20px;max-width:680px;margin:0 auto;}
+    .tag{background:#7c3aed;color:white;font-size:11px;font-weight:bold;padding:3px 10px;border-radius:4px;letter-spacing:.1em;text-transform:uppercase;}
+    h1{font-size:clamp(22px,5vw,36px);color:#1a1a2e;margin:14px 0 8px;line-height:1.2;}
+    .meta{color:#6b7280;font-size:13px;margin-bottom:20px;display:flex;gap:16px;flex-wrap:wrap;}
+    img{width:100%;border-radius:12px;height:200px;object-fit:cover;margin-bottom:20px;}
+    p{line-height:1.85;color:#374151;margin-bottom:16px;font-size:16px;}
+    p::first-letter{font-size:2em;font-weight:bold;color:#7c3aed;float:left;margin-right:6px;line-height:.8;}
+    blockquote{border-left:4px solid #7c3aed;padding:12px 20px;background:#f5f3ff;border-radius:0 10px 10px 0;color:#5b21b6;font-style:italic;margin:20px 0;}
+    h2{font-size:22px;color:#1a1a2e;margin:24px 0 10px;}
+  </style>
+</head>
+<body>
+  <div class="tag">Technology</div>
+  <h1>HTML aur CSS se Duniya Badal Sakte Ho!</h1>
+  <div class="meta"><span>✍️ Tumhara Naam</span><span>📅 June 2025</span><span>⏱️ 3 min read</span></div>
+  <img src="https://picsum.photos/680/200?random=5" alt="Article hero image">
+  <p>Web development seekhna aaj ke time mein sabse important skill hai. HTML se websites ka structure banta hai aur CSS se unhe sundar banate hain.</p>
+  <blockquote>"Code likhna sikhne se pehle, sochna sikhna zaroori hai." — Anonymous Developer</blockquote>
+  <h2>Kyu Seekhen Web Dev?</h2>
+  <p>Kyunki internet pe sab kuch HTML aur CSS se hi bana hai! Tum apne ideas ko reality mein bana sakte ho — bilkul free mein, sirf ek computer aur browser chahiye!</p>
+</body>
+</html>`,
+`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body{background:#f8fafc;font-family:Arial,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;padding:20px;}
+    .card{background:white;border-radius:20px;overflow:hidden;width:280px;box-shadow:0 10px 40px rgba(0,0,0,.12);transition:transform .3s;}
+    .card:hover{transform:translateY(-8px);}
+    .img{width:100%;height:180px;object-fit:cover;}
+    .body{padding:20px;}
+    .cat{font-size:11px;font-weight:800;color:#7c3aed;text-transform:uppercase;letter-spacing:.1em;}
+    h3{font-size:17px;margin:6px 0 10px;color:#1a1a2e;}
+    .price-row{display:flex;align-items:center;gap:10px;margin:14px 0;}
+    .price{font-size:22px;font-weight:800;color:#7c3aed;}
+    .old{text-decoration:line-through;color:#9ca3af;font-size:14px;}
+    .badge{background:#fef3c7;color:#92400e;font-size:11px;font-weight:bold;padding:3px 8px;border-radius:6px;}
+    .btn{width:100%;background:#7c3aed;color:white;border:none;padding:12px;border-radius:10px;font-size:15px;font-weight:bold;cursor:pointer;transition:background .2s;}
+    .btn:hover{background:#6d28d9;}
+    .stars{color:#f59e0b;font-size:14px;margin-bottom:6px;}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img class="img" src="https://picsum.photos/280/180?random=10" alt="Product">
+    <div class="body">
+      <div class="cat">Electronics</div>
+      <h3>Wireless Headphones Pro 🎧</h3>
+      <div class="stars">★★★★★ <span style="color:#6b7280;font-size:12px;">(128 reviews)</span></div>
+      <div class="price-row">
+        <div class="price">₹1,299</div>
+        <div class="old">₹2,499</div>
+        <div class="badge">48% OFF</div>
+      </div>
+      <button class="btn">🛒 Add to Cart</button>
+    </div>
+  </div>
+</body>
+</html>`,
+`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body{background:#0f172a;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;font-family:Arial,sans-serif;color:white;flex-direction:column;gap:30px;}
+    @keyframes spin{to{transform:rotate(360deg);}}
+    @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.2);}}
+    @keyframes dash{0%{stroke-dashoffset:220;}100%{stroke-dashoffset:0;}}
+    .spinner1{width:60px;height:60px;border:5px solid #1e293b;border-top-color:#7c3aed;border-radius:50%;animation:spin 1s linear infinite;}
+    .spinner2{width:60px;height:60px;border:5px solid transparent;border-top-color:#f59e0b;border-right-color:#f59e0b;border-radius:50%;animation:spin .7s linear infinite;}
+    .dots{display:flex;gap:8px;}
+    .dot{width:14px;height:14px;background:#7c3aed;border-radius:50%;animation:pulse .8s ease infinite;}
+    .dot:nth-child(2){animation-delay:.15s;background:#f59e0b;}
+    .dot:nth-child(3){animation-delay:.3s;background:#22c55e;}
+    .label{font-size:12px;color:#64748b;margin-top:6px;text-align:center;}
+    .loader-box{display:flex;flex-direction:column;align-items:center;gap:10px;}
+  </style>
+</head>
+<body>
+  <h2>🌀 CSS Loaders — Sirf CSS!</h2>
+  <div style="display:flex;gap:40px;flex-wrap:wrap;justify-content:center;">
+    <div class="loader-box"><div class="spinner1"></div><div class="label">Simple Spinner</div></div>
+    <div class="loader-box"><div class="spinner2"></div><div class="label">Double Border</div></div>
+    <div class="loader-box"><div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div><div class="label">Bouncing Dots</div></div>
+  </div>
+</body>
+</html>`,
+`<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Segoe UI',Arial,sans-serif;}
+    nav{background:#7c3aed;color:white;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;}
+    .logo{font-size:20px;font-weight:bold;}
+    .nav-links{display:flex;gap:16px;}
+    .nav-links a{color:rgba(255,255,255,.85);text-decoration:none;font-size:14px;}
+    .hero{background:linear-gradient(135deg,#7c3aed,#ff6b35);color:white;text-align:center;padding:80px 20px;}
+    .hero h1{font-size:clamp(24px,5vw,48px);margin-bottom:14px;}
+    .hero p{font-size:clamp(14px,3vw,18px);opacity:.9;margin-bottom:28px;}
+    .cta{background:white;color:#7c3aed;border:none;padding:14px 32px;border-radius:12px;font-size:16px;font-weight:bold;cursor:pointer;}
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:50px 24px;background:#f8fafc;max-width:900px;margin:0 auto;}
+    .feat{background:white;border-radius:14px;padding:24px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.07);}
+    .feat .ic{font-size:36px;margin-bottom:10px;}
+    .feat h3{color:#1a1a2e;margin-bottom:6px;}
+    .feat p{font-size:13px;color:#6b7280;}
+    footer{background:#1a1535;color:#8070a8;text-align:center;padding:24px;font-size:13px;}
+    @media(max-width:600px){.features{grid-template-columns:1fr;}.nav-links{display:none;}}
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">🚀 StartupName</div>
+    <div class="nav-links"><a href="#">Home</a><a href="#">Features</a><a href="#">Pricing</a><a href="#">Contact</a></div>
+  </nav>
+  <div class="hero">
+    <h1>Apna Sapna Pura Karo 🌟</h1>
+    <p>Hum tumhare ideas ko reality mein laate hain. Fast, Beautiful, Responsive.</p>
+    <button class="cta">Get Started Free →</button>
+  </div>
+  <div class="features">
+    <div class="feat"><div class="ic">⚡</div><h3>Fast</h3><p>Lightning fast performance har device pe</p></div>
+    <div class="feat"><div class="ic">📱</div><h3>Responsive</h3><p>Mobile, tablet, laptop — sab pe perfect</p></div>
+    <div class="feat"><div class="ic">🎨</div><h3>Beautiful</h3><p>Stunning design jo users ko impress kare</p></div>
+  </div>
+  <footer>Made with ❤️ using HTML & CSS | Responsive Landing Page</footer>
+</body>
+</html>`,
+`<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>My Portfolio</title>
+  <style>
+    :root{--p:#6c3fc5;--a:#ff6b35;--bg:#0a0818;--card:#131124;--text:#e8e0ff;--muted:#8070a8;}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--text);}
+    header{background:linear-gradient(135deg,var(--p),var(--a));padding:60px 20px;text-align:center;}
+    .av{width:100px;height:100px;border-radius:50%;border:4px solid white;font-size:46px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;animation:float 3s ease-in-out infinite;}
+    @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+    header h1{font-size:clamp(22px,5vw,36px);}
+    .sec{padding:36px 20px;max-width:800px;margin:0 auto;}
+    .sec h2{font-size:20px;margin-bottom:16px;color:#a78bfa;}
+    .skills{display:flex;gap:8px;flex-wrap:wrap;}
+    .sk{background:var(--card);border:1px solid #2e2650;padding:7px 14px;border-radius:16px;font-size:12px;color:#c4b5fd;}
+    .sk:hover{background:var(--p);border-color:var(--p);color:white;}
+    .projs{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;}
+    .prj{background:var(--card);border:1px solid #2e2650;border-radius:12px;padding:18px;text-align:center;transition:all .3s;}
+    .prj:hover{border-color:var(--p);transform:translateY(-4px);}
+    footer{text-align:center;padding:24px;color:var(--muted);font-size:12px;}
+    @media(max-width:480px){header{padding:44px 16px;}.sec{padding:24px 14px;}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="av">🧑‍💻</div>
+    <h1>Apna Naam Yahan</h1>
+    <p style="opacity:.9;margin-top:8px;">Student | Future Developer | India 🇮🇳</p>
+  </header>
+  <div class="sec"><h2>🛠️ Skills</h2><div class="skills"><div class="sk">HTML 🌐</div><div class="sk">CSS 🎨</div><div class="sk">Flexbox</div><div class="sk">Grid</div><div class="sk">Animations</div><div class="sk">Responsive</div></div></div>
+  <div class="sec"><h2>💼 Projects</h2><div class="projs"><div class="prj"><div style="font-size:30px;">🌐</div><div style="font-size:13px;margin-top:8px;">First Website</div></div><div class="prj"><div style="font-size:30px;">🎨</div><div style="font-size:13px;margin-top:8px;">Art Gallery</div></div><div class="prj"><div style="font-size:30px;">📱</div><div style="font-size:13px;margin-top:8px;">Responsive UI</div></div></div></div>
+  <footer>Made with ❤️ HTML &amp; CSS</footer>
+</body>
+</html>`
+  ];
+  return codes[i]||pgDefault;
+}
+
+// ===== QUIZ =====
+const quizzes=[
+  {q:['HTML ka full form kya hai?','What is the full form of HTML?'],opts:['HyperText Markup Language','High Tech Modern Language','HyperText Master Language','Hello Text Making Language'],ans:0,exp:'HTML = HyperText Markup Language. Yeh webpages banane ki language hai!'},
+  {q:['Paragraph tag kaun sa hai?','Which is the paragraph tag?'],opts:['<para>','<text>','<p>','<pg>'],ans:2,exp:'<p> tag paragraph ke liye use hota hai!'},
+  {q:['CSS kisliye use karte hain?','What is CSS used for?'],opts:['Database banana','Website ko sundar banana','Server chalana','Files store karna'],ans:1,exp:'CSS se website ko color, font, size de ke sundar banate hain!'},
+  {q:['Image tag mein kaun sa attribute image ka path batata hai?','Which attribute in image tag gives the image path?'],opts:['href','link','src','url'],ans:2,exp:'src attribute image ka path ya URL batata hai.'},
+  {q:['Flexbox mein horizontal centering ke liye kaun si property?','Which property for horizontal centering in Flexbox?'],opts:['text-align:center','justify-content:center','float:center','align:center'],ans:1,exp:'justify-content:center flexbox mein horizontal centering karta hai!'},
+  {q:['CSS mein #ff0000 kaunsa color hai?','What color is #ff0000 in CSS?'],opts:['Blue','Green','Red','Yellow'],ans:2,exp:'#ff0000 red color hai! ff=max red, 00=no green, 00=no blue.'},
+  {q:['Link banane ke liye kaun sa HTML tag?','Which HTML tag creates a link?'],opts:['<link>','<href>','<a>','<url>'],ans:2,exp:'<a> tag (anchor tag) links banata hai. href mein URL likhte hain.'},
+  {q:['Ordered list (numbered) kaun sa tag hai?','Which tag creates an ordered (numbered) list?'],opts:['<ul>','<list>','<ol>','<li>'],ans:2,exp:'<ol> = ordered list (numbers), <ul> = unordered list (bullets)!'},
+  {q:['CSS animation ke liye kaun sa rule use hota hai?','Which CSS rule is used for animations?'],opts:['@animation','@keyframes','@motion','@move'],ans:1,exp:'@keyframes se CSS animations define karte hain!'},
+  {q:['Grid mein 3 equal columns ke liye kaun si property?','Which CSS property creates 3 equal grid columns?'],opts:['grid-columns:3','columns:3','grid-template-columns:repeat(3,1fr)','flex:3'],ans:2,exp:'grid-template-columns:repeat(3,1fr) se 3 equal columns bante hain!'},
+  {q:['Mobile responsive banane ke liye kaun sa tag zaroori hai?','Which tag is needed to make website mobile responsive?'],opts:['<responsive>','<meta name="viewport">','<mobile>','<screen>'],ans:1,exp:'<meta name="viewport" content="width=device-width"> mobile ke liye zaroori hai!'},
+  {q:['CSS Variables kaise define karte hain?','How do you define CSS variables?'],opts:['$varname','--varname','@varname','#varname'],ans:1,exp:'CSS variables -- se shuru hote hain! Jaise --primary: #7c3aed;'},
+  {q:['Box Model mein element ke andar ka space kya hai?','What is the inner space of an element in Box Model?'],opts:['margin','border','padding','content'],ans:2,exp:'padding andar ka space hai. margin bahar ka space hai!'},
+  {q:['Pseudo-class kaun sa hai?','Which is a pseudo-class?'],opts:[':hover','.active','#focus','>>child'],ans:0,exp:':hover ek pseudo-class hai — mouse hover hone pe style apply hoti hai!'},
+  {q:['@media query kab use hoti hai?','When is @media query used?'],opts:['Videos play karne ke liye','Responsive design ke liye','Images load karne ke liye','Colors change karne ke liye'],ans:1,exp:'@media queries se different screen sizes pe different styles apply karte hain!'}
+];
+
+let qIdx=0,qScore=0,answered=false;
+function renderQuiz(){
+  const q=quizzes[qIdx];
+  const qText=q.q[lang==='en'?1:0];
+  document.getElementById('quiz-body').innerHTML=`
+    <div style="font-size:.78rem;color:var(--muted);margin-bottom:12px;">Question ${qIdx+1} / ${quizzes.length} &nbsp;|&nbsp; Score: <span style="color:var(--green);font-weight:700;">${qScore}</span></div>
+    <div class="quiz-q">${qText}</div>
+    <div class="quiz-opts">${q.opts.map((o,i)=>`<button class="qopt" onclick="answer(${i})">${o}</button>`).join('')}</div>
+    <div class="qfb" id="qfb"></div>
+  `;
+  document.getElementById('quiz-nav').innerHTML=`
+    <button class="btn btn-secondary" onclick="prevQ()" style="font-size:.82rem;padding:8px 14px;" ${qIdx===0?'disabled':''}>← Pichla</button>
+    <button class="btn btn-primary" onclick="nextQ()" style="font-size:.82rem;padding:8px 14px;" ${qIdx===quizzes.length-1?'disabled':''}>Agla →</button>
+    <span class="qprog">${qIdx+1}/${quizzes.length}</span>
+  `;
+  answered=false;
+}
+
+function answer(i){
+  if(answered) return; answered=true;
+  const q=quizzes[qIdx];
+  const opts=document.querySelectorAll('.qopt');
+  opts.forEach(o=>o.disabled=true);
+  opts[q.ans].classList.add('correct');
+  if(i!==q.ans) opts[i].classList.add('wrong');
+  const fb=document.getElementById('qfb');
+  if(i===q.ans){
+    fb.className='qfb ok'; fb.textContent='✅ Sahi jawab! '+q.exp;
+    qScore++;stats.quiz++;stats.xp+=20;updateStats();
+  } else {
+    fb.className='qfb bad'; fb.textContent='❌ Galat! '+q.exp;
+  }
+}
+
+function nextQ(){if(qIdx<quizzes.length-1){qIdx++;renderQuiz();}}
+function prevQ(){if(qIdx>0){qIdx--;renderQuiz();}}
+
+// ===== SCROLL REVEAL =====
+function initReveal(){
+  const els=document.querySelectorAll('.reveal');
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+  },{threshold:.08});
+  els.forEach(el=>io.observe(el));
+}
+
+// ===== INIT =====
+renderRoadmap();
+renderProjects();
+renderQuiz();
+initReveal();
+updateStats();
+</script>
+</body>
+</html>
